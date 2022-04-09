@@ -1,0 +1,152 @@
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+        transform: translateY(-1rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0rem)
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 1050px) {
+    .textPosition {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        height: 0;
+    }
+}
+
+body {
+    background-image: linear-gradient(to right, #F1FBFE, #FFFFFF);
+    height: 100vh;
+    font-family: Calibri;
+    line-height: 1.6;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.logo {
+    margin-top: 2rem; 
+    margin-left: 2rem;
+    position: fixed;
+}
+
+.container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type:x mandatory;
+}
+
+.navbar {
+    position: fixed;
+    top: 2rem;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    background: transparent;
+}
+
+.navbar ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    width: 100%;
+}
+
+.navbar ul li {
+    margin: 0 1rem;
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+}
+
+.navbar ul li a:hover {
+    color: skyblue;
+}
+
+.footer{
+    align-self: flex-end;
+    position: absolute;
+    width: 100%;
+    list-style: none;
+    text-align: right;
+    font-weight: bold;
+    font-family: 'Calibri', 'serif';
+}
+
+.footer ul {
+    margin-right: 1.5rem;
+}
+
+.footer ul li {
+    display: inline-block;
+    padding-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+section {
+    flex: 0 0 auto;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    scroll-snap-align: center;
+    align-items: center;
+}
+
+.textPosition {
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+    flex-grow: 1; 
+    flex-basis: 0;
+}
+
+.rectangle {
+    float: left;
+    height: 4rem;
+    width: 12rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.frontLogo {
+    height: 30rem;
+    width: auto\9;
+}
+
+.flex-1-1 {
+    flex: 1;
+}
+
+.flex-1-1 p {
+    color: 1C1E3D;
+    font-family: 'Calibri', 'serif';
+    line-height: 1.5;
+    text-align: left;
+    font-weight: bold;
+}
+
+h1::before {
+    display: inline-block;
+    content: "";
+    border-top: .1rem solid black;
+    width: 2rem;
+    transform: translateY(0.65rem);
+    margin-right: 1em;
+}
+
