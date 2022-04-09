@@ -15,16 +15,6 @@
     padding: 0;
 }
 
-@media (max-width: 1050px) {
-    .textPosition {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-        height: 0;
-    }
-}
-
 body {
     background-image: linear-gradient(to right, #F1FBFE, #FFFFFF);
     height: 100vh;
@@ -37,7 +27,8 @@ body {
 .logo {
     margin-top: 2rem; 
     margin-left: 2rem;
-    position: fixed;
+    position: absolute;
+    display: none;
 }
 
 .container {
@@ -50,7 +41,6 @@ body {
 
 .navbar {
     position: fixed;
-    top: 2rem;
     z-index: 1;
     display: flex;
     width: 100%;
@@ -62,11 +52,12 @@ body {
     list-style-type: none;
     justify-content: center;
     width: 100%;
+    margin-top: 2.5rem;
 }
 
 .navbar ul li {
     margin: 0 1rem;
-    padding: 1rem;
+    padding: 0.25rem;
     font-weight: bold;
 }
 
@@ -79,23 +70,28 @@ body {
 }
 
 .footer{
+    display: inline-block;
     align-self: flex-end;
     position: absolute;
     width: 100%;
+    right: 3rem;
     list-style: none;
     text-align: right;
     font-weight: bold;
     font-family: 'Calibri', 'serif';
-}
-
-.footer ul {
-    margin-right: 1.5rem;
+    background-color: linear-gradient(to right, #F1FBFE, #FFFFFF);
+    color: white;
 }
 
 .footer ul li {
     display: inline-block;
     padding-bottom: 1rem;
     font-size: 0.9rem;
+    color: 1C1E3D;
+}
+
+.footer ul li a {
+    text-decoration: none;
 }
 
 section {
@@ -104,15 +100,20 @@ section {
     height: 100vh;
     width: 100%;
     scroll-snap-align: center;
-    align-items: center;
 }
 
 .textPosition {
+    padding: 0 5% 0;
+    margin-top: 10rem;
+    width: 100%;
     display: flex;
-    align-items: center;
-    margin-left: 10%;
-    flex-grow: 1; 
-    flex-basis: 0;
+}
+
+.textPosition div {
+    color: 1C1E3D;
+    font-family: 'Calibri', 'serif';
+    line-height: 1.5;
+    font-weight: bold;
 }
 
 .rectangle {
@@ -125,20 +126,17 @@ section {
   }
 
 .frontLogo {
-    height: 30rem;
-    width: auto\9;
+    height: auto;
+    width: 80%;
 }
 
 .flex-1-1 {
-    flex: 1;
+    text-align: left;
 }
 
-.flex-1-1 p {
-    color: 1C1E3D;
-    font-family: 'Calibri', 'serif';
-    line-height: 1.5;
-    text-align: left;
-    font-weight: bold;
+.flex-1-2 {
+    flex: 1;
+    text-align: center;
 }
 
 h1::before {
@@ -150,3 +148,8 @@ h1::before {
     margin-right: 1em;
 }
 
+@media only screen and (min-width: 645px) {
+    .logo {
+        display: block;
+    }
+}
