@@ -1,15 +1,3 @@
-@keyframes transitionIn {
-    from {
-        opacity: 0;
-        transform: translateY(-1rem);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0rem)
-    }
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -17,11 +5,8 @@
 
 body {
     background-image: linear-gradient(to right, #F1FBFE, #FFFFFF);
-    height: 100vh;
     font-family: Calibri;
     line-height: 1.6;
-    height: 100vh;
-    overflow-y: hidden;
 }
 
 .logo {
@@ -34,9 +19,10 @@ body {
 .container {
     display: flex;
     flex-wrap: nowrap;
-    overflow-x: auto;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     scroll-snap-type:x mandatory;
+    margin-bottom: 1rem;
 }
 
 .navbar {
@@ -63,6 +49,7 @@ body {
 
 .navbar ul li a {
     text-decoration: none;
+    color: 1C1E3D;
 }
 
 .navbar ul li a:hover {
@@ -70,24 +57,26 @@ body {
 }
 
 .footer{
-    display: inline-block;
-    align-self: flex-end;
-    position: absolute;
+    position: sticky;
     width: 100%;
-    right: 3rem;
     list-style: none;
     text-align: right;
     font-weight: bold;
     font-family: 'Calibri', 'serif';
-    background-color: linear-gradient(to right, #F1FBFE, #FFFFFF);
-    color: white;
+    background-color: 1C1E3D;
+    bottom: 0;
+}
+
+.footer ul {
+    margin-right: 2rem;
+    vertical-align: middle;
 }
 
 .footer ul li {
     display: inline-block;
     padding-bottom: 1rem;
     font-size: 0.9rem;
-    color: 1C1E3D;
+    color: white;
 }
 
 .footer ul li a {
@@ -103,8 +92,7 @@ section {
 }
 
 .textPosition {
-    padding: 0 5% 0;
-    margin-top: 10rem;
+    padding: 0rem 5% 0;
     width: 100%;
     display: flex;
 }
@@ -128,16 +116,29 @@ section {
 .frontLogo {
     height: auto;
     width: 80%;
+    vertical-align: middle;
+}
+
+.frontLogoPosition {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }
 
 .flex-1-1 {
     text-align: left;
+    margin-top: 10rem;
 }
 
 .flex-1-2 {
     flex: 1;
     text-align: center;
+    display: none;
 }
+
+a, a:visited, a:hover, a:active {
+    color: inherit;
+  }
 
 h1::before {
     display: inline-block;
@@ -148,8 +149,18 @@ h1::before {
     margin-right: 1em;
 }
 
-@media only screen and (min-width: 645px) {
-    .logo {
+@media only screen and (min-width: 1300px) {
+    .flex-1-2 {
+        display: block;
+    }
+}
+
+.viewDemo {
+    display: none;
+}
+
+@media only screen and (min-width: 480px) {
+    .viewDemo {
         display: block;
     }
 }

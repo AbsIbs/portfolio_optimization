@@ -6,41 +6,35 @@
     <link rel="stylesheet" type="text/css" href="../static/styles/styles.css">
 </head>
 <body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#dailyTracker">Stocks</a></li>
+            <li><a href="#report">Report</li></a>
+            <li><a href="#modelling">Modelling</li></a>
+        </ul>
+    </nav>
     <div class="container">
-        <nav class="navbar">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#dailyTracker">Stocks</a></li>
-                <li>Report</li></a>
-                <li>Modelling</li>
-            </ul>
-        </nav>
-        <nav class="footer">
-            <ul>
-                <li><a href="">Github</a></li>
-                <li>/</li>
-                <li>LinkedIn</li>
-            </ul>
-        </nav>
         <section id="home">
-                <div class="textPosition">
-                    <div class="flex-1-1">
-                        <p>
-                            <h1 style="font-size: 16px; font-weight: bold; display: flex;">Abass Ibrahim</h1>
-                        </p>
-                        <p style="font-size: 2.5em; margin-top: 0; margin-bottom: 0;">Portfolio Optimization<br>With Reinforcement Learning</p>
-                        <p style="font-weight: normal; font-size: 1.4em;">
-                            The aim of this project was to utilize reinforcement learning to train a machine to learn<br>
-                            how to rebalance a portfolio of stocks given what happened previously in the market.<br>
-                            The project futher conducts sentiment analysis on tweets regarding traded companies <br> into positive or negative.<br>
-                        </p>
-                        <br>
-                        <div class="rectangle" style="box-shadow: 0.5rem 0.5rem black; background-color: 1C1E3D;">
-                            <p style="color: white; font-weight: normal; font-size: 1rem;" View Demo>
-                                Github repo
-                            </p>       
-                        </div>
-                        </a>    
+            <div class="textPosition">
+                <div class="flex-1-1">
+                    <p>
+                        <h1 style="font-size: 16px; font-weight: bold; display: flex;">Abass Ibrahim</h1>
+                    </p>
+                    <p style="font-size: 2.5em; margin-top: 0; margin-bottom: 0;">Portfolio Optimization<br>With Reinforcement Learning</p>
+                    <p style="font-weight: normal; font-size: 1.4em;">
+                        The aim of this project was to utilize reinforcement learning to train a machine to learn<br>
+                        how to rebalance a portfolio of stocks given what happened previously in the market.<br>
+                        The project futher conducts sentiment analysis on tweets regarding traded companies <br> into positive or negative.<br>
+                    </p>
+                    <br>
+                    <div class="rectangle" style="box-shadow: 0.5rem 0.5rem black; background-color: 1C1E3D;">
+                        <p style="color: white; font-weight: normal; font-size: 1rem;" View Demo>
+                            Github repo
+                        </p>       
+                    </div>
+                    </a>
+                    <div class="viewDemo">
                         <div class="rectangle" style="background-color: transparent; margin-left: 2em;">
                             <p style="color: 1C1E3D; font-weight: bold; font-size: 1rem;" View Demo>
                                 View demo
@@ -48,17 +42,41 @@
                             <img src="../static/img/playButton.png" style="height: 2.5em; width: auto; padding-left: 0.6rem;">
                         </div>
                     </div>
-                    <div class="flex-1-2">
-                        <img class="frontLogo" src="../static/img/front_page.png" style="margin-right: 2rem;">
-                    </div>
                 </div>
+                <div class="flex-1-2">
+                    <span class="frontLogoPosition"></span><img class="frontLogo" src="../static/img/front_page.png" style="margin-right: 2rem;">
+                </div>
+            </div>
         </section>
         <section id="dailyTracker">
             <div class="textPosition">
+                <div class="flex-1-1">
                 This is daily tracker
+                </div>
+            </div>
+        </section>
+        <section id="report">
+            <div class="textPosition">
+                <div class="flex-1-1">
+                This is the report
+                </div>
+            </div>
+        </section>
+        <section id="modelling">
+            <div class="textPosition">
+                <div class="flex-1-1">
+                This is the model
+                </div>
             </div>
         </section>
     </div>
 </body>
+<nav class="footer">
+    <ul>
+        <li><a href="">Github</a></li>
+        <li>/</li>
+        <li>LinkedIn</li>
+    </ul>
+</nav>
 </html>
 
