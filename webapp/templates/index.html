@@ -4,12 +4,13 @@
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../static/styles/styles.css">
+    <link rel='stylesheet' href="{{ url_for('static', filename='font-awesome/font-awesome.min.css')}}">
 </head>
 <body>
     <nav class="navbar">
         <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#dailyTracker">Stocks</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
             <li><a href="#report">Report</li></a>
             <li><a href="#modelling">Modelling</li></a>
         </ul>
@@ -31,7 +32,7 @@
                     <div class="rectangle" style="box-shadow: 0.5rem 0.5rem black; background-color: 1C1E3D;">
                         <p style="color: white; font-weight: normal; font-size: 1rem;" View Demo>
                             Github repo
-                        </p>       
+                        </p>      
                     </div>
                     </a>
                     <div class="viewDemo">
@@ -48,10 +49,82 @@
                 </div>
             </div>
         </section>
-        <section id="dailyTracker">
-            <div class="textPosition">
-                <div class="flex-1-1">
-                This is daily tracker
+        <section id="dashboard">
+            <div class="dashboardBanPosition">
+                <div class="dashboardBan">
+                    <div class="BanRectangle">
+                        <img src="../static/img/hashtag.png" style="height: 2rem; padding-right: 1rem;">
+                        <p>
+                            <div class="BAN" style="font-weight: bold; color: black; font-size: 30px; line-height: 1.25;">
+                                30
+                                <div class="BanDesc">Constituents</div>                                     
+                            </div>                                   
+                        </p>
+                    </div>    
+                    <div class="BanRectangle">
+                        <img src="../static/img/marketReturn.png" style="height: 2rem; padding-right: 1rem;">
+                        <p>
+                            <div class="BAN" style="font-weight: bold; color: black; font-size: 30px; line-height: 1.25;">
+                                20%
+                                <div class="BanDesc">DOW Index ROI</div>                                     
+                            </div>                                   
+                        </p>
+                    </div>    
+                    <div class="BanRectangle">
+                        <div class="separator"></div>
+                    </div>
+                    <div class="BanRectangle">
+                        <img src="../static/img/rank.png" style="height: 2rem; padding-right: 1rem;">
+                        <p>
+                            <div class="BAN" style="font-weight: bold; color: black; font-size: 30px; line-height: 1.25;">
+                                AAPL
+                                <div class="BanDesc">Top Performer</div>                                     
+                            </div>                                   
+                        </p>
+                    </div>     
+                    <div class="BanRectangle">
+                        <img src="../static/img/stockReturn.png" style="height: 2rem; padding-right: 1rem;">
+                        <p>
+                            <div class="BAN" style="font-weight: bold; color: black; font-size: 30px; line-height: 1.25;">
+                                30%
+                                <div class="BanDesc">Apple ROI</div>                                     
+                            </div>                                   
+                        </p>
+                    </div>    
+                </div>   
+                <br>
+                <div class="graphFormContainer">
+                    <div class="form" style="flex: 1;">
+                        <form method="POST">
+                            <div style="font-weight: bold; box-shadow: 0 0 0; font-size: 1.5rem; background-color: #1C1E3D; color: white;">
+                                Stock Prices
+                            </div>
+                            <label for="ticker">Ticker</label>
+                            <select id="selectStock" name="selectStock">
+                                <option value="Apple">AAPL</option>
+                                <option value="TSLA">TSLA</option>
+                            </select>
+                            <label for="period">Period</label>
+                            <select id="period" name="period">
+                                <option value="1month">1-month</option>
+                                <option value="6month">6-months</option>
+                                <option value="1year">1-year</option>
+                                <option value="max">Max period</option>
+                            </select>
+                            <label for="interval">Interval</label>
+                            <select id="interval" name="interval">
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="quarterly">Quarterly</option>
+                                <option value="yearly">Yearly</option>
+                            </select>
+                            <input type="submit" value="SUBMIT">
+                        </form>
+                    </div>
+                    <div class="graph" style="flex: 2;">
+                        TJ
+                    </div>
                 </div>
             </div>
         </section>
@@ -71,12 +144,16 @@
         </section>
     </div>
 </body>
-<nav class="footer">
-    <ul>
-        <li><a href="">Github</a></li>
-        <li>/</li>
-        <li>LinkedIn</li>
-    </ul>
-</nav>
+<!--
+<div class="footerSection">
+    <nav class="footer">
+        <ul>
+            <li><a href="">Github</a></li>
+            <li>/</li>
+            <li>LinkedIn</li>
+        </ul>
+    </nav>
+</div>
+-->
 </html>
 

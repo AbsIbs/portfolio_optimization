@@ -56,20 +56,28 @@ body {
     color: skyblue;
 }
 
+/*
+.footerSection {
+    flex: 0 0 auto;
+    display: flex;
+    height: calc(100vh - 99px);
+    width: 100%;
+    scroll-snap-align: center;
+    background-color: 1C1E3D;
+}
+*/
+
 .footer{
-    position: sticky;
     width: 100%;
     list-style: none;
     text-align: right;
     font-weight: bold;
     font-family: 'Calibri', 'serif';
-    background-color: 1C1E3D;
     bottom: 0;
 }
 
 .footer ul {
     margin-right: 2rem;
-    vertical-align: middle;
 }
 
 .footer ul li {
@@ -77,6 +85,7 @@ body {
     padding-bottom: 1rem;
     font-size: 0.9rem;
     color: white;
+    vertical-align: middle;
 }
 
 .footer ul li a {
@@ -92,7 +101,7 @@ section {
 }
 
 .textPosition {
-    padding: 0rem 5% 0;
+    padding: 0 5% 0;
     width: 100%;
     display: flex;
 }
@@ -149,18 +158,112 @@ h1::before {
     margin-right: 1em;
 }
 
+.viewDemo {
+    display: none;
+}
+
+.dashboardBanPosition {
+    margin-top: 1rem;
+    position: relative;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboardBan {
+    box-shadow: 0 1.25px 1.25px rgba(0,0,0,0.25);
+    background-color: white;
+    width: 80vw;
+    display: flex;
+}
+
+.BanRectangle {
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    flex: 1;
+  }
+
+.BanDesc {
+    color: grey;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.separator {
+    background-color: #1C1E3D;
+    width: 0.01rem;
+}
+
+.graphFormContainer {
+    display: flex;
+    width: 80vw;
+    height: 62vh;
+}
+
+.graphFormContainer div {
+    background-color: white;
+    box-shadow: 0 1.25px 1.25px rgba(0,0,0,0.25);
+}
+
+input, label {
+    display: block;
+}
+
+form {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+
+form label {
+    text-align: left;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+select {
+    padding: 0.8rem 0.8rem;
+    width: 100%;
+}
+
+input[type=submit] {
+    width: 50%;
+    background-color: #1C1E3D;
+    color: white;
+    padding: 0.9rem 1.6rem;
+    margin: 2rem auto;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+
 @media only screen and (min-width: 1300px) {
     .flex-1-2 {
         display: block;
     }
 }
 
-.viewDemo {
-    display: none;
-}
-
 @media only screen and (min-width: 480px) {
     .viewDemo {
         display: block;
+    }
+}
+
+@media only screen and (min-width:955px) {
+    .dashboardBanPosition ul {
+        display: flex;
+    }
+
+    .dashboardBanPosition {
+        padding-top: 5rem;
+    }
+
+    .separator {
+        border-left: 0.15rem solid #1C1E3D;
+        height: 1.5rem;
     }
 }
