@@ -180,7 +180,7 @@ h1::before {
 }
 
 .BanRectangle {
-    height: 4.5rem;
+    height: 3.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -191,7 +191,7 @@ h1::before {
 .BanDesc {
     color: grey;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .separator {
@@ -202,12 +202,12 @@ h1::before {
 .graphFormContainer {
     display: flex;
     width: 80vw;
-    height: 62vh;
+    height: 65vh;
+    box-shadow: 0 1.25px 1.25px rgba(0,0,0,0.25);
 }
 
 .graphFormContainer div {
     background-color: white;
-    box-shadow: 0 1.25px 1.25px rgba(0,0,0,0.25);
 }
 
 input, label {
@@ -231,7 +231,7 @@ select {
     width: 100%;
 }
 
-input[type=submit] {
+button {
     width: 50%;
     background-color: #1C1E3D;
     color: white;
