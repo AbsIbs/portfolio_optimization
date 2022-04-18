@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 body {
@@ -22,7 +23,6 @@ body {
     overflow-x: hidden;
     scroll-behavior: smooth;
     scroll-snap-type:x mandatory;
-    margin-bottom: 1rem;
 }
 
 .navbar {
@@ -240,6 +240,20 @@ button {
     border-radius: 0.25rem;
     cursor: pointer;
   }
+
+.container .dashboardBanPosition .graphFormContainer .ReportDescription {
+    flex: 1; 
+    text-align: left; 
+    align-items: center;
+    background-color: transparent;
+}
+
+.container .dashboardBanPosition .graphFormContainer .ReportImg {
+    flex: 1; 
+    align-items: center; 
+    text-align: center; 
+    background-color: transparent;
+}
 
 @media only screen and (min-width: 1300px) {
     .flex-1-2 {

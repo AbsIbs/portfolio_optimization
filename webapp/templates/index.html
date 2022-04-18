@@ -8,15 +8,13 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script>callback();</script>
 </head>
-</head>
-</head>
 <body>
     <nav class="navbar">
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#dashboard">Dashboard</a></li>
-            <li><a href="#report">Report</li></a>
-            <li><a href="#modelling">Modelling</li></a>
+            <li><a href="#report">Report</a></li>
+            <li><a href="#modelling">Modelling</a></li>
         </ul>
     </nav>
     <div class="container">
@@ -57,20 +55,20 @@
             <div class="dashboardBanPosition">
                 <div class="dashboardBan">
                     <div class="BanRectangle">
-                        <img src="../static/img/hashtag.png" style="height: 2rem; padding-right: 1rem;">
+                        <img src="../static/img/company.png" style="height: 2rem; padding-right: 1rem;">
                         <p>
                             <div class="BAN" style="font-weight: bold; color: black; font-size:1.5rem; line-height: 1.25;">
-                                30
-                                <div class="BanDesc">Constituents</div>                                     
+                                <span id="companyName">-</span>
+                                <div class="BanDesc">Company Name</div>                                     
                             </div>                                   
                         </p>
                     </div>    
                     <div class="BanRectangle">
-                        <img src="../static/img/marketReturn.png" style="height: 2rem; padding-right: 1rem;">
+                        <img src="../static/img/industry.png" style="height: 2rem; padding-right: 1rem;">
                         <p>
                             <div class="BAN" style="font-weight: bold; color: black; font-size:1.5rem; line-height: 1.25;">
-                                20%
-                                <div class="BanDesc">DOW Index ROI</div>                                     
+                                <span id="sector">-</span>
+                                <div class="BanDesc">Sector</div>                                     
                             </div>                                   
                         </p>
                     </div>    
@@ -78,20 +76,20 @@
                         <div class="separator"></div>
                     </div>
                     <div class="BanRectangle">
-                        <img src="../static/img/rank.png" style="height: 2rem; padding-right: 1rem;">
+                        <img src="../static/img/uptrend.png" style="height: 2rem; padding-right: 1rem;">
                         <p>
                             <div class="BAN" style="font-weight: bold; color: black; font-size:1.5rem; line-height: 1.25;">
-                                AAPL
-                                <div class="BanDesc">Top Performer</div>                                     
+                                <span id="ROI">-</span>%
+                                <div class="BanDesc">ROI</div>                                     
                             </div>                                   
                         </p>
                     </div>     
                     <div class="BanRectangle">
-                        <img src="../static/img/stockReturn.png" style="height: 2rem; padding-right: 1rem;">
+                        <img src="../static/img/risk.png" style="height: 2rem; padding-right: 1rem;">
                         <p>
                             <div class="BAN" style="font-weight: bold; color: black; font-size:1.5rem; line-height: 1.25;">
-                                30%
-                                <div class="BanDesc">Apple ROI</div>                                     
+                                <span id="std">-</span>
+                                <div class="BanDesc">Risk (std)</div>                                     
                             </div>                                   
                         </p>
                     </div>    
@@ -134,10 +132,165 @@
             </div>
         </section>
         <section id="report">
-            <div class="textPosition">
-                <div class="flex-1-1">
-                This is the report
-                </div>
+            <div class="container">
+                <section id="A1" style="display: flex;">
+                    <div class="dashboardBanPosition" style="display: flex; align-items: center; margin-top: 0rem;">
+                        <div class="graphFormContainer" style="box-shadow: none;">
+                            <div class="ReportImg">
+                                <img src="../static/img/RL_business_statement.png" style="width: 95%; height: auto;">
+                            </div>
+                            <div class="ReportDescription">
+                                <div style="background-color: transparent;">
+                                    <p style="font-weight: bold; font-size: 1.5rem; margin-top: 0; margin-bottom: 0; padding: 1rem 1rem 1rem; color: #1C1E3D">BUSINESS PROBLEM</p>
+                                    <p style="font-weight: 500; font-size: 1rem; padding: 1rem 1rem 1rem; color: #1C1E3D">
+                                        My project aims to solve the problem of ‘given what happened in the market yesterday, what is the best way to allocate my portfolio of assets?’ by leveraging Reinforcement learning. 
+                                        <br><br>
+                                        This approach is a shift from traditional stock market decision-making techniques which focus on predictions. Rather, this approach places emphasis on reacting to prior states of the market.
+                                        <br><br>
+                                        <a href="#A2"><img src="../static/img/after.png" style="width: 5%; height: auto;"></a>
+                                    </p>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="A2" style="display: flex;">
+                    <div class="dashboardBanPosition" style="display: flex; align-items: center;">
+                        <div class="graphFormContainer" style="box-shadow: none;">
+                            <div class="ReportImg">
+                                <img src="../static/img/rl_1.png" style="width: 95%; height: auto;">
+                            </div>
+                            <div class="ReportDescription">
+                                <div style="background-color: transparent;">
+                                    <p style="font-weight: bold; font-size: 1.5rem; margin-top: 0; margin-bottom: 0; padding: 1rem 1rem 1rem; color: #1C1E3D">REINFORCEMENT LEARNING (1/2)</p>
+                                    <p style="font-weight: 500; font-size: 1rem; padding: 1rem 1rem 1rem; color: #1C1E3D">
+                                        RL is a type of machine learning technique that uses a reward/punishment system in order to train a machine. Specifically, the machine acts within a premade environment and learns to take the best actions by maximizing its rewards. 
+                                        The possible actions that are available are determined by the action space whilst the information given to the machine is determined by the observation state (a sample of the environment).                                         
+                                        <br><br>
+                                        <a href="#A1"><img src="../static/img/previous.png" style="width: 5%; height: auto"></a>
+                                        <a href="#A3"><img src="../static/img/after.png" style="width: 5%; height: auto;"></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="A3" style="display: flex;">
+                    <div class="dashboardBanPosition" style="display: flex; align-items: center;">
+                        <div class="graphFormContainer" style="box-shadow: none;">
+                            <div class="ReportImg">
+                                <img src="../static/img/rl_2.png" style="width: 95%; height: auto;">
+                            </div>
+                            <div class="ReportDescription">
+                                <div style="background-color: transparent;">
+                                    <p style="font-weight: bold; font-size: 1.5rem; margin-top: 0; margin-bottom: 0; padding: 1rem 1rem 1rem; color: #1C1E3D">REINFORCEMENT LEARNING (2/2)</p>
+                                    <p style="font-weight: 500; font-size: 1rem; padding: 1rem 1rem 1rem; color: #1C1E3D">
+                                        The machine is given an observation, takes an action in response to this and creates a new state. That new state is analysed and if it is desirable, then a reward is given. 
+                                        If not, a punishment is given. This sequence repeats until all observations have been met or a reward threshold is reached.                                      
+                                        <br><br>
+                                        <a href="#A2"><img src="../static/img/previous.png" style="width: 5%; height: auto"></a>
+                                        <a href="#A4"><img src="../static/img/after.png" style="width: 5%; height: auto;"></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="A4" style="display: flex;">
+                    <div class="dashboardBanPosition" style="display: flex; align-items: center;">
+                        <div class="graphFormContainer" style="box-shadow: none;">
+                            <div class="ReportImg">
+                                <img src="../static/img/rl_Dataset.png" style="width: 95%; height: auto;">
+                            </div>
+                            <div class="ReportDescription">
+                                <div style="background-color: transparent;">
+                                    <p style="font-weight: bold; font-size: 1.5rem; margin-top: 0; margin-bottom: 0; padding: 1rem 1rem 1rem; color: #1C1E3D">DATA AND FEATURE ENGINEERING</p>
+                                    <p style="font-weight: 500; font-size: 1rem; padding: 1rem 1rem 1rem; color: #1C1E3D">
+                                        The dataset comprised of the 30 constituents from the DOW Jones Industrial Index. Historical stock price information was gathered through the yahoo finance api. 
+                                        The data was structured as a panel dataset.                                    
+                                        <br><br>
+                                        The initial features consisted of High, Low, Close, Volume. Technical indicators focusing on trends, momentum and volume were also included e.g., MACD, RSI and MFI.  
+                                        <br><br>
+                                        <a href="#A3"><img src="../static/img/previous.png" style="width: 5%; height: auto"></a>
+                                        <a href="#A5"><img src="../static/img/after.png" style="width: 5%; height: auto;"></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="A5" style="display: flex;">
+                    <div class="dashboardBanPosition" style="display: flex; align-items: center;">
+                        <div class="graphFormContainer" style="box-shadow: none;">
+                            <div class="ReportImg">
+                                <img src="../static/img/rl_methodology.png" style="width: 95%; height: auto;">
+                            </div>
+                            <div class="ReportDescription">
+                                <div style="background-color: transparent;">
+                                    <p style="font-weight: bold; font-size: 1.5rem; margin-top: 0; margin-bottom: 0; padding: 1rem 1rem 1rem; color: #1C1E3D">METHODOLOGY</p>
+                                    <p style="font-weight: 500; font-size: 1rem; padding: 1rem 1rem 1rem; color: #1C1E3D">
+                                        - Observation space: 252 trading-days covariance matrix based on ROI<br>
+                                        - Action space: buy/sell/hold<br>
+                                        - Training period: 2013-04-02 to 2018-12-28<br>
+                                        - Validation period: 2018-12-31 to 2020-06-09<br>
+                                        - Testing period: 2020-06-10 to 2022-03-25<br>
+                                        - Algorithms: A2C, PPO, DDPG, SAC<br>
+                                        - The machine would then trade with an initial capital of $1,000,000.
+                                        <br><br>
+                                        <a href="#A4"><img src="../static/img/previous.png" style="width: 5%; height: auto"></a>
+                                        <a href="#A6"><img src="../static/img/after.png" style="width: 5%; height: auto;"></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="A6" style="display: flex;">
+                    <div class="dashboardBanPosition" style="display: flex; align-items: center;">
+                        <div class="graphFormContainer" style="box-shadow: none;">
+                            <div class="ReportImg">
+                                <div id="RL_ReportGraph" style="width: 95%; height: auto;"></div>
+                            </div>
+                            <div class="ReportDescription">
+                                <div style="background-color: transparent;">
+                                    <p style="font-weight: bold; font-size: 1.5rem; margin-top: 0; margin-bottom: 0; padding: 1rem 1rem 1rem; color: #1C1E3D">MODEL RESULTS</p>
+                                    <p style="font-weight: 500; font-size: 1rem; padding: 1rem 1rem 1rem; color: #1C1E3D">
+                                        The model results were certainly interesting. For the validation set, the market return was 23.3% whilst our best model achieved 24% ROI. <br><br>
+                                        Whilst this may look impressive at first, we must also investigate another key metric, sharpe ratio. This refers to how much ROI is gained for every unit of risk taken. <br><br>
+                                        This is a metric that should be maximized. The market achieved an ROI of 23.3% with a sharpe ratio of around 4. In comparison, our best model achieved a 24% ROI with a sharpe ratio of around 0.65. <br><br>
+                                        This means that our model took on a significantly greater amount of risk for a 1% ROI difference.
+                                        <br><br>
+                                        <a href="#A5"><img src="../static/img/previous.png" style="width: 5%; height: auto"></a>
+                                        <a href="#A7"><img src="../static/img/after.png" style="width: 5%; height: auto;"></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="A7" style="display: flex;">
+                    <div class="dashboardBanPosition" style="display: flex; align-items: center;">
+                        <div class="graphFormContainer" style="box-shadow: none;">
+                            <div class="ReportImg">
+                                <img src="../static/img/rl_conclusion.png" style="width: 95%; height: auto;">
+                            </div>
+                            <div class="ReportDescription">
+                                <div style="background-color: transparent;">
+                                    <p style="font-weight: bold; font-size: 1.5rem; margin-top: 0; margin-bottom: 0; padding: 1rem 1rem 1rem; color: #1C1E3D">CONCLUSION</p>
+                                    <p style="font-weight: 500; font-size: 1rem; padding: 1rem 1rem 1rem; color: #1C1E3D">
+                                        To conclude, our RL models do seem useful as they were able to beat the market. However, they did so at a far greater cost.<br><br>
+                                        To increase the sharpe, different neural network architectures for the agent should be experimented with.<br><br>
+                                        Additional technical indicators may also be included along with a longer training period.<br><br>
+                                        At present, this model is only useful for those willing to take on a disproporational amount of risk to beat the market
+                                        <br><br>
+                                        <a href="#A6"><img src="../static/img/previous.png" style="width: 5%; height: auto"></a>
+                                        <a href="#A7"><img src="../static/img/after.png" style="width: 5%; height: auto;"></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </section>
         <section id="modelling">
@@ -155,13 +308,39 @@
             let Interval = document.getElementById('interval').value;
             let response = await fetch("/callback/getStock?data=" + Stock + "&period=" + Period + "&interval=" + Interval);
             if (response.ok) {
-                let chartJson = await response.json();
+                let obj = await response.json();
+                let name = document.getElementById('companyName');
+                name.innerHTML = obj['companyName'];
+                name = document.getElementById('sector');
+                name.innerHTML = obj['companySector'];
+                name = document.getElementById('ROI');
+                name.innerHTML = obj['companyROI'];
+                name = document.getElementById('std');
+                name.innerHTML = obj['companyStd'];
+
+                let chartJson = JSON.parse(obj['graphJson'])
                 Plotly.newPlot("chart", chartJson['data'], chartJson['layout']);
             }
             else {
                 alert("HTTP-Error: " + response.status + "on getStock");
             }
         }
+    </script>
+    <script>
+        let RL_json_str = '{"data":[{"alignmentgroup":"True","customdata":[[0.667],[0.658],[4.282],[0.618],[0.622]],"hovertemplate":"Model=%{x}<br>Cumulative Sum(%)=%{marker.color}<br>Sharpe Ratio=%{customdata[0]}<extra></extra>","legendgroup":"","marker":{"color":[24.4,23.6,23.3,22.4,22.2],"coloraxis":"coloraxis","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"textposition":"auto","x":["ddpg","ppo","baseline","a2c","sac"],"xaxis":"x","y":[24.4,23.6,23.3,22.4,22.2],"yaxis":"y","type":"bar"}],"layout":{"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Model"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Cumulative Summary (%)"}},"coloraxis":{"colorbar":{"title":{"text":"Cumulative Sum(%)"}},"colorscale":[[0.0,"rgb(253, 237, 176)"],[0.09090909090909091,"rgb(250, 205, 145)"],[0.18181818181818182,"rgb(246, 173, 119)"],[0.2727272727272727,"rgb(240, 142, 98)"],[0.36363636363636365,"rgb(231, 109, 84)"],[0.45454545454545453,"rgb(216, 80, 83)"],[0.5454545454545454,"rgb(195, 56, 90)"],[0.6363636363636364,"rgb(168, 40, 96)"],[0.7272727272727273,"rgb(138, 29, 99)"],[0.8181818181818182,"rgb(107, 24, 93)"],[0.9090909090909091,"rgb(76, 21, 80)"],[1.0,"rgb(47, 15, 61)"]]},"legend":{"tracegroupgap":0},"title":{"text":"Portfolio Optimization model summary"},"barmode":"relative","shapes":[{"line":{"color":"black","dash":"dot"},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":23.3,"y1":23.3,"yref":"y"}]}}'
+        let RL_obj = JSON.parse(RL_json_str)
+        let RL_data = RL_obj['data']
+        let RL_layout = RL_obj['layout']
+        let RL_config = {responsive: true}
+        Plotly.newPlot('RL_ReportGraph', RL_data, RL_layout, RL_config );
+    </script>
+    <script>
+        let NLP_json_str = '{"data":[{"alignmentgroup":"True","customdata":[[0.869,0.752,0.806],[0.813,0.768,0.789],[0.753,0.799,0.775],[0.815,0.758,0.785],[0.952,0.698,0.805],[0.702,0.767,0.724],[0.681,0.756,0.716]],"hovertemplate":"classifiers=%{x}<br>val_accuracy=%{marker.color}<br>val_recall=%{customdata[0]}<br>val_precision=%{customdata[1]}<br>val_f1=%{customdata[2]}<extra></extra>","legendgroup":"","marker":{"color":[0.733,0.724,0.722,0.716,0.707,0.671,0.657],"coloraxis":"coloraxis","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"textposition":"auto","x":["Tuned Gradient_boost","Tuned Random_Forest","Tuned Logistic_regresion","Naive_Bayes","Gradient_boost","Random_Forest","Logistic_regresion"],"xaxis":"x","y":[0.733,0.724,0.722,0.716,0.707,0.671,0.657],"yaxis":"y","type":"bar"}],"layout":{"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Classifiers"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Val Accuracy (%)"}},"coloraxis":{"colorbar":{"title":{"text":"val_accuracy"}},"colorscale":[[0.0,"rgb(253, 237, 176)"],[0.09090909090909091,"rgb(250, 205, 145)"],[0.18181818181818182,"rgb(246, 173, 119)"],[0.2727272727272727,"rgb(240, 142, 98)"],[0.36363636363636365,"rgb(231, 109, 84)"],[0.45454545454545453,"rgb(216, 80, 83)"],[0.5454545454545454,"rgb(195, 56, 90)"],[0.6363636363636364,"rgb(168, 40, 96)"],[0.7272727272727273,"rgb(138, 29, 99)"],[0.8181818181818182,"rgb(107, 24, 93)"],[0.9090909090909091,"rgb(76, 21, 80)"],[1.0,"rgb(47, 15, 61)"]]},"legend":{"tracegroupgap":0},"title":{"text":"NLP model summary"},"barmode":"relative","shapes":[{"line":{"color":"black","dash":"dot"},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":0.63,"y1":0.63,"yref":"y"}]}}'
+        let NLP_obj = JSON.parse(NLP_json_str)
+        let NLP_data = NLP_obj['data']
+        let NLP_layout = NLP_obj['layout']
+        let NLP_config = {responsive: true}
+        Plotly.newPlot('ReportGraphB', NLP_data, NLP_layout, NLP_config );
     </script>
 </body>
 <!--
