@@ -210,6 +210,52 @@ h1::before {
     background-color: white;
 }
 
+.roiCarousel {
+    box-shadow: 0 1.25px 1.25px rgba(0,0,0,0.25);
+    background-color: white;
+    width: 80vw;
+    display: flex;
+}
+
+.roiCarousel > div {
+    margin-left: 0.5rem;
+    background-color: grey;
+    box-shadow: 0 1.25px 1.25px rgba(0,0,0,0.25);
+    height: 7rem;
+    flex-direction: column;
+    color: white;
+}
+
+.carouselHeader {
+    position: relative;
+    height: 2.5rem;
+    width: 57vw;
+    /*
+    border: #1C1E3D solid;
+    */
+    z-index: 1;
+    top: 5rem;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.modellingGraphs {
+    position: relative;
+    height: 15rem; 
+    width: 57vw; 
+    left: 50%;
+    transform: translate(-50%, 0%);
+    display: flex;
+}
+
+.modellingGraphs > div {
+    flex: 1;
+    max-height: 100%; 
+    max-width: 100%; 
+    margin: 0.5rem 0.5rem 0.5rem; 
+    box-shadow: 0 1.25px 1.25px rgba(0,0,0,0.25);
+}
+
 input, label {
     display: block;
 }
@@ -254,6 +300,21 @@ button {
     text-align: center; 
     background-color: transparent;
 }
+
+.risersFallers {
+    position: relative; 
+    left: 0.5rem; 
+    color: #1C1E3D; 
+    font-weight: bold; 
+    font-size: 1.5rem;
+    position: relative;
+    height: 2.5rem;
+    width: 57vw;
+    z-index: 1;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
 
 @media only screen and (min-width: 1300px) {
     .flex-1-2 {

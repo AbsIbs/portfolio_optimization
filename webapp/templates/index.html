@@ -7,15 +7,16 @@
     <link rel='stylesheet' href="{{ url_for('static', filename='font-awesome/font-awesome.min.css')}}">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script>callback();</script>
+    <script>callback2();</script>
 </head>
 <body>
     <nav class="navbar">
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#dashboard">Dashboard</a></li>
-            <li><a href="#reportA">Report A</a></li>
-            <li><a href="#reportB">Report B</a></li>
-            <li><a href="#modelling">Modelling</a></li>
+            <li><a href="#home" onClick="removehash()">Home</a></li>
+            <li><a href="#dashboard" onClick="removehash()">Dashboard</a></li>
+            <li><a href="#reportA" onClick="removehash()">Report A</a></li>
+            <li><a href="#reportB" onClick="removehash()">Report B</a></li>
+            <li><a href="#modelling" onClick="removehash()">Modelling</a></li>
         </ul>
     </nav>
     <div class="container">
@@ -106,7 +107,35 @@
                             <label for="stock">Ticker</label>
                             <select id="stock" name="stock" aria-label="Select">
                                 <option value="AAPL">AAPL</option>
-                                <option value="TSLA">TSLA</option>
+                                <option value="AMGN">AMGN</option>
+                                <option value="AXP">AXP</option>
+                                <option value="BA">BA</option>
+                                <option value="CAT">CAT</option>
+                                <option value="CRM">CRM</option>
+                                <option value="CSCO">CSCO</option>
+                                <option value="CVX">CVX</option>
+                                <option value="DIS">DIS</option>
+                                <option value="DOW">DOW</option>
+                                <option value="GS">GS</option>
+                                <option value="HD">HD</option>
+                                <option value="HON">HON</option>
+                                <option value="IBM">IBM</option>
+                                <option value="INTC">INTC</option>
+                                <option value="JNJ">JNJ</option>
+                                <option value="JPM">JPM</option>
+                                <option value="KO">KO</option>
+                                <option value="MCD">MCD</option>
+                                <option value="MMM">MMM</option>
+                                <option value="MRK">MRK</option>
+                                <option value="MSFT">MSFT</option>
+                                <option value="NKE">NKE</option>
+                                <option value="PG">PG</option>
+                                <option value="TRV">TRV</option>
+                                <option value="UNH">UNH</option>
+                                <option value="V">V</option>
+                                <option value="VZ">VZ</option>
+                                <option value="WBA">WBA</option>
+                                <option value="WMT">WMT</option>
                             </select>
                             <label for="period">Period</label>
                             <select id="period" name="period" aria-label="Select">
@@ -450,9 +479,288 @@
             </div>
         </section>
         <section id="modelling">
-            <div class="textPosition">
-                <div class="flex-1-1">
-                    Modelling
+            <div class="modelContainer" style="display: flex; flex-direction: column;">
+                <div class="carouselHeader">
+                    <span style="position: absolute; left: 0.5rem; color: #1C1E3D; font-weight: bold; font-size: 1.5rem;">
+                        Daily Return on Investment
+                    </span>
+                    <span style="position: absolute; right: 0;">
+                        <button type="Button" style="width: 10rem; height: 2.5rem; padding: 0 0 0; margin: 0 0 0;" class="btn btn-primary" onclick="callback2()">Fetch</button> 
+                    </span>
+                </div>
+                <div style="height: 15rem; position: relative;">
+                    <div class="container">
+                        <section id="C1">
+                            <div class="dashboardBanPosition">
+                                <div class="roiCarousel" style="height: 8rem; background-color: transparent; box-shadow: none;">
+                                    <div class="BanRectangle" style="width: 10vw; background-color: transparent; text-align: center; box-shadow: none;"></div>
+                                    <div id="roiAAPL" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="AAPL">-</span>%
+                                        </div>
+                                        - AAPL -
+                                    </div>
+                                    <div id="roiAMGN" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="AMGN">-</span>%
+                                        </div>
+                                        - AMGN - 
+                                    </div>
+                                    <div id="roiAXP" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="AXP">-</span>%
+                                        </div>
+                                        - AXP - 
+                                    </div>
+                                    <div id="roiBA" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="BA">-</span>%
+                                        </div>
+                                        - BA - 
+                                    </div>
+                                    <div id="roiCAT" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="CAT">-</span>%
+                                        </div>
+                                        - CAT - 
+                                    </div>
+                                    <div class="BanRectangle" style="width: 10vw; background-color: transparent; text-align: center; box-shadow: none;">
+                                        <a href="#C2"><img src="../static/img/after.png" style="width: 25%; height: auto;"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="C2">
+                            <div class="dashboardBanPosition">
+                                <div class="roiCarousel" style="height: 8rem; background-color: transparent; box-shadow: none;">
+                                    <div class="BanRectangle" style="width: 10vw; background-color: transparent; text-align: center; box-shadow: none;">
+                                        <a href="#C1"><img src="../static/img/previous.png" style="width: 25%; height: auto;"></a>
+                                    </div>
+                                    <div id="roiCRM" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="CRM">-</span>%
+                                        </div>
+                                        - CRM - 
+                                    </div>
+                                    <div id="roiCSCO" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="CSCO">-</span>%
+                                        </div>
+                                        - CSCO - 
+                                    </div>
+                                    <div id="roiCVX" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="CVX">-</span>%
+                                        </div>
+                                        - CVX - 
+                                    </div>
+                                    <div id="roiDIS" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="DIS">-</span>%
+                                        </div>
+                                        - DIS - 
+                                    </div>
+                                    <div id="roiDOW" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="DOW">-</span>%
+                                        </div>
+                                        - DOW - 
+                                    </div>
+                                    <div class="BanRectangle" style="width: 10vw; background-color: transparent; text-align: center; box-shadow: none;">
+                                        <a href="#C3"><img src="../static/img/after.png" style="width: 25%; height: auto;"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="C3">
+                            <div class="dashboardBanPosition">
+                                <div class="roiCarousel" style="height: 8rem; background-color: transparent; box-shadow: none;">
+                                    <div class="BanRectangle" style="width: 10vw; background-color: transparent; text-align: center; box-shadow: none;">
+                                        <a href="#C2"><img src="../static/img/previous.png" style="width: 25%; height: auto;"></a>
+                                    </div>
+                                    <div id="roiGS" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="GS">-</span>%
+                                        </div>
+                                        - GS - 
+                                    </div>
+                                    <div id="roiHD" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="HD">-</span>%
+                                        </div>
+                                        - HD - 
+                                    </div>
+                                    <div id="roiHON" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="HON">-</span>%
+                                        </div>
+                                        - HON - 
+                                    </div>
+                                    <div id="roiIBM" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="IBM">-</span>%
+                                        </div>
+                                        - IBM - 
+                                    </div>
+                                    <div id="roiINTC" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="INTC">-</span>%
+                                        </div>
+                                        - INTC - 
+                                    </div>
+                                    <div class="BanRectangle" style="width: 10vw; background-color: transparent; text-align: center; box-shadow: none;">
+                                        <a href="#C4"><img src="../static/img/after.png" style="width: 25%; height: auto;"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="C4">
+                            <div class="dashboardBanPosition">
+                                <div class="roiCarousel" style="height: 8rem; background-color: transparent; box-shadow: none;">
+                                    <div class="BanRectangle" style="width: 10vw; background-color: transparent; text-align: center; box-shadow: none;">
+                                        <a href="#C3"><img src="../static/img/previous.png" style="width: 25%; height: auto;"></a>
+                                    </div>
+                                    <div id="roiJNJ" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="JNJ">-</span>%
+                                        </div>
+                                        - JNJ - 
+                                    </div>
+                                    <div id="roiJPM" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="JPM">-</span>%
+                                        </div>
+                                        - JPM - 
+                                    </div>
+                                    <div id="roiKO" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="KO">-</span>%
+                                        </div>
+                                        - KO - 
+                                    </div>
+                                    <div id="roiMCD" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="MCD">-</span>%
+                                        </div>
+                                        - MCD - 
+                                    </div>
+                                    <div id="roiMMM" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="MMM">-</span>%
+                                        </div>
+                                        - MMM - 
+                                    </div>
+                                    <div class="BanRectangle" style="width: 10vw; background-color: transparent; text-align: center; box-shadow: none;">
+                                        <a href="#C5"><img src="../static/img/after.png" style="width: 25%; height: auto;"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="C5">
+                            <div class="dashboardBanPosition">
+                                <div class="roiCarousel" style="height: 8rem; background-color: transparent; box-shadow: none;">
+                                    <div class="BanRectangle" style="width: 10vw; background-color: transparent; text-align: center; box-shadow: none;">
+                                        <a href="#C4"><img src="../static/img/previous.png" style="width: 25%; height: auto;"></a>
+                                    </div>
+                                    <div id="roiMRK" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="MRK">-</span>%
+                                        </div>
+                                        - MRK - 
+                                    </div>
+                                    <div id="roiMSFT" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="MSFT">-</span>%
+                                        </div>
+                                        - MSFT - 
+                                    </div>
+                                    <div id="roiNKE" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="NKE">-</span>%
+                                        </div>
+                                        - NKE - 
+                                    </div>
+                                    <div id="roiPG" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="PG">-</span>%
+                                        </div>
+                                        - PG - 
+                                    </div>
+                                    <div id="roiTRV" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="TRV">-</span>%
+                                        </div>
+                                        - TRV - 
+                                    </div>
+                                    <div class="BanRectangle" style="width: 10vw; background-color: transparent; text-align: center; box-shadow: none;">
+                                        <a href="#C6"><img src="../static/img/after.png" style="width: 25%; height: auto;"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="C6">
+                            <div class="dashboardBanPosition">
+                                <div class="roiCarousel" style="height: 8rem; background-color: transparent; box-shadow: none;">
+                                    <div class="BanRectangle" style="width: 10vw; background-color: transparent; text-align: center; box-shadow: none;">
+                                        <a href="#C5"><img src="../static/img/previous.png" style="width: 25%; height: auto;"></a>
+                                    </div>
+                                    <div id="roiUNH" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="UNH">-</span>%
+                                        </div>
+                                        - UNH - 
+                                    </div>
+                                    <div id="roiV" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="V">-</span>%
+                                        </div>
+                                        - V - 
+                                    </div>
+                                    <div id="roiVZ" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="VZ">-</span>%
+                                        </div>
+                                        - VZ - 
+                                    </div>
+                                    <div id="roiWBA" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="WBA">-</span>%
+                                        </div>
+                                        - WBA - 
+                                    </div>
+                                    <div id="roiWMT" style="height: 7rem; display: flex; align-items: center; justify-content: center; text-align: left; flex: 1;">
+                                        <div style="font-size: 2rem; font-weight: bold;">
+                                            <span id="WMT">-</span>%
+                                        </div>
+                                        - WMT - 
+                                    </div>
+                                    <div class="BanRectangle" style="width: 10vw; background-color: transparent; text-align: center; box-shadow: none;">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="risersFallers">
+                    <span style="position: absolute; left: 0.5rem; color: #1C1E3D; font-weight: bold; font-size: 1.5rem;">
+                        Risers and Fallers
+                    </span>
+                </div>
+                <div class="modellingGraphs">
+                    <div>
+                        <div id="topRisers" style="height: 100%; width: 100%;"></div>
+                    </div>
+                    <div>
+                        <div id="topFallers" style="height: 100%; width: 100%;"></div>
+                    </div>   
+                </div>
+                <div class="modellingGraphs" style="height: 2.5rem; top: 1rem;">
+                    <span style="position: absolute; left: 0.5rem; color: #1C1E3D; font-weight: bold; font-size: 1.5rem;">
+                        Recommended Holdings
+                    </span>
+                    <span style="position: absolute; right: 0;">
+                        <button type="Button" style="width: 10rem; height: 2.5rem; padding: 0 0 0; margin: 0 0 0;" class="btn btn-primary" onclick="callback3()">Model</button> 
+                    </span>
                 </div>
             </div>
         </section>
@@ -488,7 +796,7 @@
         let RL_data = RL_obj['data']
         let RL_layout = RL_obj['layout']
         let RL_config = {responsive: true}
-        Plotly.newPlot('RL_ReportGraph', RL_data, RL_layout, RL_config );
+        Plotly.newPlot('RL_ReportGraph', RL_data, RL_layout, RL_config);
     </script>
     <script>
         let NLP_json_str = '{"data":[{"alignmentgroup":"True","customdata":[[0.869,0.752,0.806],[0.813,0.768,0.789],[0.753,0.799,0.775],[0.815,0.758,0.785],[0.952,0.698,0.805],[0.702,0.767,0.724],[0.681,0.756,0.716]],"hovertemplate":"classifiers=%{x}<br>val_accuracy=%{marker.color}<br>val_recall=%{customdata[0]}<br>val_precision=%{customdata[1]}<br>val_f1=%{customdata[2]}<extra></extra>","legendgroup":"","marker":{"color":[0.733,0.724,0.722,0.716,0.707,0.671,0.657],"coloraxis":"coloraxis","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"textposition":"auto","x":["Tuned Gradient_boost","Tuned Random_Forest","Tuned Logistic_regresion","Naive_Bayes","Gradient_boost","Random_Forest","Logistic_regresion"],"xaxis":"x","y":[0.733,0.724,0.722,0.716,0.707,0.671,0.657],"yaxis":"y","type":"bar"}],"layout":{"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Classifiers"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Val Accuracy (%)"}},"coloraxis":{"colorbar":{"title":{"text":"val_accuracy"}},"colorscale":[[0.0,"rgb(253, 237, 176)"],[0.09090909090909091,"rgb(250, 205, 145)"],[0.18181818181818182,"rgb(246, 173, 119)"],[0.2727272727272727,"rgb(240, 142, 98)"],[0.36363636363636365,"rgb(231, 109, 84)"],[0.45454545454545453,"rgb(216, 80, 83)"],[0.5454545454545454,"rgb(195, 56, 90)"],[0.6363636363636364,"rgb(168, 40, 96)"],[0.7272727272727273,"rgb(138, 29, 99)"],[0.8181818181818182,"rgb(107, 24, 93)"],[0.9090909090909091,"rgb(76, 21, 80)"],[1.0,"rgb(47, 15, 61)"]]},"legend":{"tracegroupgap":0},"title":{"text":"NLP model summary"},"barmode":"relative","shapes":[{"line":{"color":"black","dash":"dot"},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":0.63,"y1":0.63,"yref":"y"}]}}'
@@ -496,7 +804,48 @@
         let NLP_data = NLP_obj['data']
         let NLP_layout = NLP_obj['layout']
         let NLP_config = {responsive: true}
-        Plotly.newPlot('SA_ReportGraph', NLP_data, NLP_layout, NLP_config );
+        Plotly.newPlot('SA_ReportGraph', NLP_data, NLP_layout, NLP_config);
+    </script>
+    <script>
+        function removehash(){
+            setTimeout(function(){
+                history.replaceState(window.location.pathname.slice(2, window.location.pathname.length), document.title, window.location.pathname);
+            }, 1);
+        }
+    </script>
+    <script>
+        async function callback2() {
+            let roi_response = await fetch("/callback2/fetchROI")
+            if (roi_response.ok) {
+                let summary_obj = await roi_response.json()
+                let roi_obj = JSON.parse(summary_obj['roi_dict'])
+
+                for (const [key, value] of Object.entries(roi_obj)) {
+                    let roi_name = document.getElementById(key);
+                    roi_name.innerHTML = value;
+                    let roiId = 'roi' + key;
+
+                    if (value < 0) {
+                        document.getElementById(roiId).style.backgroundColor = 'darkred';
+                    } else if (value > 0) {
+                        document.getElementById(roiId).style.backgroundColor = 'darkgreen';
+                    } else {
+                        document.getElementById(roiId).style.backgroundColor = '#808080';
+                    }
+                }
+
+                let topRisers = JSON.parse(summary_obj['top_risers'])
+                let topRisers_config = {responsive: true}
+                Plotly.newPlot("topRisers", topRisers['data'], topRisers['layout'], topRisers_config);
+
+                let topFallers = JSON.parse(summary_obj['top_fallers'])
+                let topFallers_config = {responsive: true}
+                Plotly.newPlot("topFallers", topFallers['data'], topFallers['layout'], topFallers_config);
+
+            } else {
+                alert('error')
+            }
+        }
     </script>
 </body>
 <!--
