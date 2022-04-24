@@ -6,8 +6,12 @@
     <link rel="stylesheet" type="text/css" href="../static/styles/styles.css">
     <link rel='stylesheet' href="{{ url_for('static', filename='font-awesome/font-awesome.min.css')}}">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
     <script>callback();</script>
     <script>callback2();</script>
+    <script>callback3();</script>
 </head>
 <body>
     <nav class="navbar">
@@ -741,19 +745,6 @@
                         </section>
                     </div>
                 </div>
-                <div class="risersFallers">
-                    <span style="position: absolute; left: 0.5rem; color: #1C1E3D; font-weight: bold; font-size: 1.5rem;">
-                        Risers and Fallers
-                    </span>
-                </div>
-                <div class="modellingGraphs">
-                    <div>
-                        <div id="topRisers" style="height: 100%; width: 100%;"></div>
-                    </div>
-                    <div>
-                        <div id="topFallers" style="height: 100%; width: 100%;"></div>
-                    </div>   
-                </div>
                 <div class="modellingGraphs" style="height: 2.5rem; top: 1rem;">
                     <span style="position: absolute; left: 0.5rem; color: #1C1E3D; font-weight: bold; font-size: 1.5rem;">
                         Recommended Holdings
@@ -761,6 +752,18 @@
                     <span style="position: absolute; right: 0;">
                         <button type="Button" style="width: 10rem; height: 2.5rem; padding: 0 0 0; margin: 0 0 0;" class="btn btn-primary" onclick="callback3()">Model</button> 
                     </span>
+                </div>
+                <div class="modellingGraphs" style="top: 1rem; border: #1C1E3D solid;">
+                    <table id="modelTable" class="display" style="width:57vw">
+                        <thead>
+                            <tr>
+                                <th>Ticker</th>
+                                <th>Initial Holdings</th>
+                                <th>Recommended Holdings</th>
+                                <th>Holdings Percentage Change</th>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
         </section>
@@ -836,11 +839,27 @@
 
                 let topRisers = JSON.parse(summary_obj['top_risers'])
                 let topRisers_config = {responsive: true}
-                Plotly.newPlot("topRisers", topRisers['data'], topRisers['layout'], topRisers_config);
+                Plotly.newPlot("topRisers", topRisers['data'], topRisers['layout']);
 
                 let topFallers = JSON.parse(summary_obj['top_fallers'])
                 let topFallers_config = {responsive: true}
-                Plotly.newPlot("topFallers", topFallers['data'], topFallers['layout'], topFallers_config);
+                Plotly.newPlot("topFallers", topFallers['data'], topFallers['layout']);
+
+            } else {
+                alert('error')
+            }
+        }
+    </script>
+    <script>
+        async function callback3() {
+            let roi_response = await fetch("/callback3/createModel")
+            if (roi_response.ok) {
+                let data = await roi_response.json()['data']
+                $(document).ready(function() {
+                var table = $('#modelTable').DataTable({
+                    'data': data
+                    });
+                });
 
             } else {
                 alert('error')
