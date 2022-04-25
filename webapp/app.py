@@ -24,6 +24,12 @@ from finrl.drl_agents.stablebaselines3.models import DRLAgent
 from finrl.plot import backtest_stats, backtest_plot, get_daily_return, get_baseline,convert_daily_return_to_pyfolio_ts
 from finrl.finrl_meta.data_processor import DataProcessor
 from finrl.finrl_meta.data_processors.processor_yahoofinance import YahooFinanceProcessor
+from stable_baselines3 import A2C
+from stable_baselines3.common.vec_env import DummyVecEnv
+import gym
+from gym import spaces
+from datetime import date
+
 
 from ta.volatility import BollingerBands
 from ta.trend import SMAIndicator, MACD, CCIIndicator, EMAIndicator, IchimokuIndicator, AroonIndicator
@@ -319,10 +325,6 @@ def create_model_function():
     DJIA = DJIA.merge(DJIA_cov, on = 'date')
     DJIA = DJIA.sort_values(['date', 'tic']).reset_index(drop = True)
 
-    from stable_baselines3.common.vec_env import DummyVecEnv
-    import gym
-    from gym import spaces
-
     class StockPortfolioEnv(gym.Env):
         """A single stock trading environment for OpenAI gym
 
@@ -446,10 +448,10 @@ def create_model_function():
                 df_daily_return = pd.DataFrame(self.portfolio_return_memory)
                 df_daily_return.columns = ['daily_return']
                 if df_daily_return['daily_return'].std() !=0:
-                    sharpe = (252**0.5)*df_daily_return['daily_return'].mean()/ df_daily_return['daily_return'].std()
+                    sharpe = (252**0.5)*df_daily_return['daily_return'].mean()/df_daily_return['daily_return'].std()
                     print("Sharpe: ",sharpe)
                 print("=================================")
-                    
+                
                 return self.state, self.reward, self.terminal,{}
 
             else:
@@ -548,9 +550,9 @@ def create_model_function():
 
     DJIA_dates = list(DJIA['date'])
     DJIA_dates = sorted(set(DJIA_dates), key=DJIA_dates.index)
-    DJIA_start = DJIA_dates[-2]
+    DJIA_start = DJIA_dates[-3]
 
-    from datetime import date
+    
     today = date.today()
     test = data_split(DJIA, DJIA_start, str(today))
 
@@ -573,7 +575,6 @@ def create_model_function():
     }
     e_trade_gym = StockPortfolioEnv(df = test, **env_kwargs)
 
-    from stable_baselines3 import A2C
     model = A2C.load('static/models/untuned_A2C')
     df_daily_return, df_actions = DRLAgent.DRL_prediction(
         model = model, 

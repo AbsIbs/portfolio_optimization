@@ -16,11 +16,11 @@
 <body>
     <nav class="navbar">
         <ul>
-            <li><a href="#home" onClick="removehash()">Home</a></li>
-            <li><a href="#dashboard" onClick="removehash()">Dashboard</a></li>
-            <li><a href="#reportA" onClick="removehash()">Report A</a></li>
-            <li><a href="#reportB" onClick="removehash()">Report B</a></li>
-            <li><a href="#modelling" onClick="removehash()">Modelling</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#reportA">Report A</a></li>
+            <li><a href="#reportB">Report B</a></li>
+            <li><a href="#modelling">Modelling</a></li>
         </ul>
     </nav>
     <div class="container">
@@ -43,14 +43,6 @@
                         </p>      
                     </div>
                     </a>
-                    <div class="viewDemo">
-                        <div class="rectangle" style="background-color: transparent; margin-left: 2em;">
-                            <p style="color: 1C1E3D; font-weight: bold; font-size: 1rem;" View Demo>
-                                View demo
-                            </p>
-                            <img src="../static/img/playButton.png" style="height: 2.5em; width: auto; padding-left: 0.6rem;">
-                        </div>
-                    </div>
                 </div>
                 <div class="flex-1-2">
                     <span class="frontLogoPosition"></span><img class="frontLogo" src="../static/img/front_page.png" style="margin-right: 2rem;">
@@ -265,9 +257,9 @@
                                     <p style="font-weight: 500; font-size: 1rem; padding: 1rem 1rem 1rem; color: #1C1E3D">
                                         - Observation space: 252 trading-days covariance matrix based on ROI<br>
                                         - Action space: buy/sell/hold<br>
-                                        - Training period: 2013-04-02 to 2018-12-28<br>
-                                        - Validation period: 2018-12-31 to 2020-06-09<br>
-                                        - Testing period: 2020-06-10 to 2022-03-25<br>
+                                        - Training period: 2013-04-26 to 2019-01-28<br>
+                                        - Validation period: 2019-01-29 to 2020-07-07<br>
+                                        - Testing period: 2020-07-08 to 2022-04-22<br>
                                         - Algorithms: A2C, PPO, DDPG, SAC<br>
                                         - The machine would then trade with an initial capital of $1,000,000.
                                         <br><br>
@@ -289,10 +281,10 @@
                                 <div style="background-color: transparent;">
                                     <p style="font-weight: bold; font-size: 1.5rem; margin-top: 0; margin-bottom: 0; padding: 1rem 1rem 1rem; color: #1C1E3D">MODEL RESULTS</p>
                                     <p style="font-weight: 500; font-size: 1rem; padding: 1rem 1rem 1rem; color: #1C1E3D">
-                                        The model results were certainly interesting. For the validation set, the market return was 23.3% whilst our best model achieved 24% ROI. <br><br>
+                                        The model results were certainly interesting. For the validation set, the market return was 12.2% whilst our best model achieved 14.1% ROI. <br><br>
                                         Whilst this may look impressive at first, we must also investigate another key metric, sharpe ratio. This refers to how much ROI is gained for every unit of risk taken. <br><br>
-                                        This is a metric that should be maximized. The market achieved an ROI of 23.3% with a sharpe ratio of around 4. In comparison, our best model achieved a 24% ROI with a sharpe ratio of around 0.65. <br><br>
-                                        This means that our model took on a significantly greater amount of risk for a 1% ROI difference.
+                                        This is a metric that should be maximized. The market achieved an ROI of 12.2% with a sharpe ratio of around 2.2. In comparison, our best model achieved a 14.1% ROI with a sharpe ratio of around 0.46. <br><br>
+                                        This means that our model took on a significantly greater amount of risk for a 2% ROI difference.
                                         <br><br>
                                         <a href="#A5"><img src="../static/img/previous.png" style="width: 5%; height: auto"></a>
                                         <a href="#A7"><img src="../static/img/after.png" style="width: 5%; height: auto;"></a>
@@ -745,7 +737,7 @@
                         </section>
                     </div>
                 </div>
-                <div class="modellingGraphs" style="height: 2.5rem; top: 1rem;">
+                <div class="modellingGraphs" style="height: 2.5rem; top: 1.5rem;">
                     <span style="position: absolute; left: 0.5rem; color: #1C1E3D; font-weight: bold; font-size: 1.5rem;">
                         Recommended Holdings
                     </span>
@@ -753,8 +745,8 @@
                         <button type="Button" style="width: 10rem; height: 2.5rem; padding: 0 0 0; margin: 0 0 0;" class="btn btn-primary" onclick="callback3()">Model</button> 
                     </span>
                 </div>
-                <div class="modellingGraphs" style="top: 1rem; border: #1C1E3D solid;">
-                    <table id="modelTable" class="display" style="width:57vw">
+                <div class="modellingGraphs" style="height: 25rem; top: 1.5rem;">
+                    <table id="modelTable" class="display" style="width:100%; text-align: center;">
                         <thead>
                             <tr>
                                 <th>Ticker</th>
@@ -794,7 +786,7 @@
         }
     </script>
     <script>
-        let RL_json_str = '{"data":[{"alignmentgroup":"True","customdata":[[0.667],[0.658],[4.282],[0.618],[0.622]],"hovertemplate":"Model=%{x}<br>Cumulative Sum(%)=%{marker.color}<br>Sharpe Ratio=%{customdata[0]}<extra></extra>","legendgroup":"","marker":{"color":[24.4,23.6,23.3,22.4,22.2],"coloraxis":"coloraxis","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"textposition":"auto","x":["ddpg","ppo","baseline","a2c","sac"],"xaxis":"x","y":[24.4,23.6,23.3,22.4,22.2],"yaxis":"y","type":"bar"}],"layout":{"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Model"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Cumulative Summary (%)"}},"coloraxis":{"colorbar":{"title":{"text":"Cumulative Sum(%)"}},"colorscale":[[0.0,"rgb(253, 237, 176)"],[0.09090909090909091,"rgb(250, 205, 145)"],[0.18181818181818182,"rgb(246, 173, 119)"],[0.2727272727272727,"rgb(240, 142, 98)"],[0.36363636363636365,"rgb(231, 109, 84)"],[0.45454545454545453,"rgb(216, 80, 83)"],[0.5454545454545454,"rgb(195, 56, 90)"],[0.6363636363636364,"rgb(168, 40, 96)"],[0.7272727272727273,"rgb(138, 29, 99)"],[0.8181818181818182,"rgb(107, 24, 93)"],[0.9090909090909091,"rgb(76, 21, 80)"],[1.0,"rgb(47, 15, 61)"]]},"legend":{"tracegroupgap":0},"title":{"text":"Portfolio Optimization model summary"},"barmode":"relative","shapes":[{"line":{"color":"black","dash":"dot"},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":23.3,"y1":23.3,"yref":"y"}]}}'
+        let RL_json_str = '{"data":[{"alignmentgroup":"True","customdata":[[0.459],[0.444],[2.196],[0.408],[0.395]],"hovertemplate":"Model=%{x}<br>Cumulative Sum(%)=%{marker.color}<br>Sharpe Ratio=%{customdata[0]}<extra></extra>","legendgroup":"","marker":{"color":[14.1,13.4,12.2,11.7,11.2],"coloraxis":"coloraxis","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"textposition":"auto","x":["a2c","ppo","baseline","sac","ddpg"],"xaxis":"x","y":[14.1,13.4,12.2,11.7,11.2],"yaxis":"y","type":"bar"}],"layout":{"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Model"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Cumulative Summary (%)"}},"coloraxis":{"colorbar":{"title":{"text":"Cumulative Sum(%)"}},"colorscale":[[0.0,"rgb(253, 237, 176)"],[0.09090909090909091,"rgb(250, 205, 145)"],[0.18181818181818182,"rgb(246, 173, 119)"],[0.2727272727272727,"rgb(240, 142, 98)"],[0.36363636363636365,"rgb(231, 109, 84)"],[0.45454545454545453,"rgb(216, 80, 83)"],[0.5454545454545454,"rgb(195, 56, 90)"],[0.6363636363636364,"rgb(168, 40, 96)"],[0.7272727272727273,"rgb(138, 29, 99)"],[0.8181818181818182,"rgb(107, 24, 93)"],[0.9090909090909091,"rgb(76, 21, 80)"],[1.0,"rgb(47, 15, 61)"]]},"legend":{"tracegroupgap":0},"title":{"text":"Portfolio Optimization model summary"},"barmode":"relative","shapes":[{"line":{"color":"black","dash":"dot"},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":12.2,"y1":12.2,"yref":"y"}]}}'
         let RL_obj = JSON.parse(RL_json_str)
         let RL_data = RL_obj['data']
         let RL_layout = RL_obj['layout']
@@ -808,13 +800,6 @@
         let NLP_layout = NLP_obj['layout']
         let NLP_config = {responsive: true}
         Plotly.newPlot('SA_ReportGraph', NLP_data, NLP_layout, NLP_config);
-    </script>
-    <script>
-        function removehash(){
-            setTimeout(function(){
-                history.replaceState(window.location.pathname.slice(2, window.location.pathname.length), document.title, window.location.pathname);
-            }, 1);
-        }
     </script>
     <script>
         async function callback2() {
@@ -837,14 +822,6 @@
                     }
                 }
 
-                let topRisers = JSON.parse(summary_obj['top_risers'])
-                let topRisers_config = {responsive: true}
-                Plotly.newPlot("topRisers", topRisers['data'], topRisers['layout']);
-
-                let topFallers = JSON.parse(summary_obj['top_fallers'])
-                let topFallers_config = {responsive: true}
-                Plotly.newPlot("topFallers", topFallers['data'], topFallers['layout']);
-
             } else {
                 alert('error')
             }
@@ -852,14 +829,21 @@
     </script>
     <script>
         async function callback3() {
-            let roi_response = await fetch("/callback3/createModel")
-            if (roi_response.ok) {
-                let data = await roi_response.json()['data']
+            let model_response = await fetch("/callback3/createModel")
+            if (model_response.ok) {
+                var data = await model_response.json()
+                
                 $(document).ready(function() {
                 var table = $('#modelTable').DataTable({
-                    'data': data
+                    'data': data['data'],
+                    pageLength : 5,
+                    lengthMenu: [[5], [5]]
                     });
                 });
+
+                
+                Array.from(document.getElementsByTagName('th')).map(e => e.style.display = 'table-cell')
+                
 
             } else {
                 alert('error')
@@ -867,16 +851,5 @@
         }
     </script>
 </body>
-<!--
-<div class="footerSection">
-    <nav class="footer">
-        <ul>
-            <li><a href="">Github</a></li>
-            <li>/</li>
-            <li>LinkedIn</li>
-        </ul>
-    </nav>
-</div>
--->
 </html>
 

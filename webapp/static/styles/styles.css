@@ -230,9 +230,6 @@ h1::before {
     position: relative;
     height: 2.5rem;
     width: 57vw;
-    /*
-    border: #1C1E3D solid;
-    */
     z-index: 1;
     top: 5rem;
     left: 50%;
@@ -255,6 +252,13 @@ h1::before {
     margin: 0.5rem 0.5rem 0.5rem; 
     box-shadow: 0 1.25px 1.25px rgba(0,0,0,0.25);
 }
+
+
+th {
+    display: none;
+}
+
+
 
 input, label {
     display: block;
