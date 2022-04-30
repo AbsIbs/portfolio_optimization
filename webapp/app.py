@@ -15,6 +15,8 @@ from plotly.io import to_json
 import plotly.graph_objects as go
 import json
 import requests
+from datetime import date
+from decimal import Decimal
 
 from finrl.apps import config_tickers
 from finrl.finrl_meta.preprocessor.yahoodownloader import YahooDownloader
@@ -29,7 +31,6 @@ from stable_baselines3.common.vec_env import DummyVecEnv
 import gym
 from gym import spaces
 from datetime import date
-
 
 from ta.volatility import BollingerBands
 from ta.trend import SMAIndicator, MACD, CCIIndicator, EMAIndicator, IchimokuIndicator, AroonIndicator
@@ -58,8 +59,17 @@ def cb2(endpoint):
 
 @app.route('/callback3/<endpoint>')
 def cb3(endpoint):
-    if endpoint == 'createModel':
-        return create_model_function()
+    if endpoint == 'backTest':
+        return model(
+            model_type='back_test', 
+            start_date=request.args.get('startDate'), 
+            end_date=request.args.get('endDate') 
+            )
+    elif endpoint == 'createModel':
+        return model(
+            model_type='create_model',
+            start_date='start',
+            end_date='end')
     else:
         return "Bad endpoint", 400
 
@@ -208,7 +218,7 @@ def retreive_roi():
     
     return roi_summary_dict
 
-def create_model_function():
+def model(model_type, start_date, end_date):
     DOW_30_TICKERS = [
     "AXP",
     "AMGN",
@@ -242,7 +252,7 @@ def create_model_function():
     ]
 
     tickers = ' '.join(ticker for ticker in DOW_30_TICKERS)
-    df = yf.download(tickers, period='2y')
+    df = yf.download(tickers, period='3y')
     df = df.reset_index().melt('Date')
     df = df.rename(columns={'variable_0': 'values', 'variable_1': 'ticker'})
     df = df.pivot(index = ['Date', 'ticker'], columns = 'values', values='value').reset_index()
@@ -433,13 +443,13 @@ def create_model_function():
             if self.terminal:
                 df = pd.DataFrame(self.portfolio_return_memory)
                 df.columns = ['daily_return']
-                plt.plot(df.daily_return.cumsum(),'r')
-                plt.savefig('static/results/cumulative_reward.png')
-                plt.close()
+                # plt.plot(df.daily_return.cumsum(),'r')
+                # plt.savefig('static/results/cumulative_reward.png')
+                # plt.close()
                 
-                plt.plot(self.portfolio_return_memory,'r')
-                plt.savefig('static/results/rewards.png')
-                plt.close()
+                # plt.plot(self.portfolio_return_memory,'r')
+                # plt.savefig('static/results/rewards.png')
+                # plt.close()
 
                 print("=================================")
                 print("begin_total_asset:{}".format(self.asset_memory[0]))           
@@ -548,13 +558,23 @@ def create_model_function():
             obs = e.reset()
             return e, obs
 
-    DJIA_dates = list(DJIA['date'])
-    DJIA_dates = sorted(set(DJIA_dates), key=DJIA_dates.index)
-    DJIA_start = DJIA_dates[-3]
+    if model_type == 'back_test':
+        start_date = start_date
+        end_date = end_date
+        
+    elif model_type == 'create_model':
+        DJIA_dates = list(DJIA['date'])
+        DJIA_dates = sorted(set(DJIA_dates), key=DJIA_dates.index)
+        end_date = str(date.today())
 
+        if date.today().weekday() < 4:
+            start_date = DJIA_dates[-2]
+        else: 
+            start_date = DJIA_dates[-3]
+            end_date = DJIA_dates[-1]
+        
     
-    today = date.today()
-    test = data_split(DJIA, DJIA_start, str(today))
+    test = data_split(DJIA, start_date, end_date)
 
     # observation space
     stock_dimension = len(test['tic'].unique())
@@ -580,29 +600,121 @@ def create_model_function():
         model = model, 
         environment= e_trade_gym)
 
-    new_df = df_actions.T
-    new_df.columns = ['initial_holdings', 'recommended_holdings']
-    new_df['holding_pct_change'] = round(((100/new_df['initial_holdings']) * new_df['recommended_holdings']) - 100, 3)
-    new_df['initial_holdings'] = round(new_df['initial_holdings'], 3)
-    new_df['recommended_holdings'] = round(new_df['recommended_holdings'], 3)
-    new_df = new_df.reset_index()
-    new_df = new_df.rename({'index': 'ticker'}, axis = 1)
+    if model_type == 'back_test':
+        dow_index = yf.download('^DJI', period='5y')
+        dow_index = dow_index.reset_index()
+        dow_index = dow_index[(dow_index['Date'] > start_date) & (dow_index['Date'] < end_date)]
+        dow_index['Date'] = dow_index['Date'].apply(lambda x: x.strftime('%Y-%m-%d'))
+        dow_index['ROI'] = dow_index['Adj Close'].pct_change()
+        dow_index = dow_index.rename({'ROI': 'market_return', 'Date': 'date'}, axis = 1)
+        combined_df = dow_index[['market_return', 'date']].merge(df_daily_return)
+        combined_df = combined_df[['date', 'daily_return', 'market_return']]
+        #combined_df['model_gain/loss'] = combined_df['daily_return'] - combined_df['market_return']
 
-    data_list = []
+        combined_df['daily_return'] = combined_df['daily_return'].apply(lambda x: float(Decimal(x).quantize(Decimal('0.0001')) * 100))
+        combined_df['market_return'] = combined_df['market_return'].apply(lambda x: float(Decimal(x).quantize(Decimal('0.0001')) * 100))
+        combined_df['model_gain/loss'] = combined_df['daily_return'] - combined_df['market_return']
+        combined_df['model_gain/loss'] = combined_df['model_gain/loss'].apply(lambda x: str(float(Decimal(x).quantize(Decimal('0.0001')))) + '%')
 
-    for ticker in new_df['ticker']:
-        df = new_df[new_df['ticker'] == ticker]
-        data_list.append([
-                list(df['ticker'])[0], 
-                list(df['initial_holdings'])[0], 
-                list(df['recommended_holdings'])[0], 
-                list(df['holding_pct_change'])[0]
+        fig = px.line(
+            combined_df,
+            x = 'date',
+            y = ['daily_return', 'market_return'],
+            hover_data= ['model_gain/loss']
+        )
+        fig.update_layout(title_text = f'Time Series')
+        fig.update_layout({
+            "plot_bgcolor": "rgba(0, 0, 0, 0)",
+            "paper_bgcolor": "rgba(0, 0, 0, 0)",
+        })
+        fig.update_xaxes(title_text="Date")
+        fig.update_yaxes(title_text="ROI (%)")
+
+        graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+        market_vs_model = pd.DataFrame([
+            {
+                'Name': 'Model',
+                'Cum_Sum': round(combined_df['daily_return'].sum(), 4),
+            },
+            {
+                'Name': 'Market',
+                'Cum_Sum': round(combined_df['market_return'].sum(), 4)
+            }
+        ])
+
+        market_vs_model_fig = px.bar(
+            market_vs_model,
+            x = 'Name',
+            y = 'Cum_Sum',
+            color='Name'
+        )
+
+        market_vs_model_fig.update_layout(title_text = f'Model vs Market Cumulative ROI')
+        market_vs_model_fig.update_yaxes(title_text="ROI (%)")
+        market_vs_model_fig.update_layout({
+            "plot_bgcolor": "rgba(0, 0, 0, 0)",
+            "paper_bgcolor": "rgba(0, 0, 0, 0)",
+        })
+
+        market_vs_model_graphJSON = json.dumps(market_vs_model_fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+        combined_df['daily_return'] = combined_df['daily_return'].apply(lambda x: str(x) + '%')
+        combined_df['market_return'] = combined_df['market_return'].apply(lambda x: str(x) + '%')
+
+        data_list = []
+
+        for i in range(1, len(combined_df)):
+            df = combined_df.iloc[i]
+            data_list.append([
+                df['date'],
+                df['daily_return'],
+                df['market_return'],
+                df['model_gain/loss']
             ])
 
-    data_result = {
-        'data': data_list
-    }
+        data_result = {
+            'graphJSON': graphJSON,
+            'data': data_list,
+            'market_vs_model': market_vs_model_graphJSON
+        }
 
-    data_result = json.dumps(data_result)
+        data_result = json.dumps(data_result)
 
-    return data_result
+        return data_result
+
+
+    elif model_type == 'create_model':
+        new_df = df_actions.T
+        new_df.columns = ['initial_holdings', 'recommended_holdings']
+        new_df['initial_holdings'] = new_df['initial_holdings'].apply(lambda x: float(Decimal(x).quantize(Decimal('0.0001')) * 100))
+        new_df['recommended_holdings'] = new_df['recommended_holdings'].apply(lambda x: float(Decimal(x).quantize(Decimal('0.0001')) * 100))
+        new_df['holding_pct_change'] = new_df['recommended_holdings'] - new_df['initial_holdings']
+
+        new_df['initial_holdings'] = new_df['initial_holdings'].apply(lambda x: str(x) + '%')
+        new_df['recommended_holdings'] = new_df['recommended_holdings'].apply(lambda x: str(x) + '%')
+        new_df['holding_pct_change'] = new_df['holding_pct_change'].apply(lambda x: str(float(Decimal(x).quantize(Decimal('0.0001')))) + '%')
+
+        new_df = new_df.reset_index()
+        new_df = new_df.rename({'index': 'ticker'}, axis = 1)
+
+        data_list = []
+
+        for ticker in new_df['ticker']:
+            df = new_df[new_df['ticker'] == ticker]
+            data_list.append([
+                    list(df['ticker'])[0], 
+                    list(df['initial_holdings'])[0], 
+                    list(df['recommended_holdings'])[0], 
+                    list(df['holding_pct_change'])[0]
+                ])
+
+        data_result = {
+            'data': data_list
+        }
+
+        data_result = json.dumps(data_result)
+
+        return data_result
+
+    

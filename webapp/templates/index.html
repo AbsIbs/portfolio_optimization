@@ -11,7 +11,8 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
     <script>callback();</script>
     <script>callback2();</script>
-    <script>callback3();</script>
+    <script>callback3_1();</script>
+    <script>callback3_2();</script>
 </head>
 <body>
     <nav class="navbar">
@@ -20,6 +21,7 @@
             <li><a href="#dashboard">Dashboard</a></li>
             <li><a href="#reportA">Report A</a></li>
             <li><a href="#reportB">Report B</a></li>
+            <li><a href="#backTesting">Back Testing</a></li>
             <li><a href="#modelling">Modelling</a></li>
         </ul>
     </nav>
@@ -37,11 +39,12 @@
                         The project futher conducts sentiment analysis on tweets regarding traded companies <br> into positive or negative.<br>
                     </p>
                     <br>
-                    <div class="rectangle" style="box-shadow: 0.5rem 0.5rem black; background-color: 1C1E3D;">
-                        <p style="color: white; font-weight: normal; font-size: 1rem;" View Demo>
-                            Github repo
-                        </p>      
-                    </div>
+                    <a href="https://github.com/AbsIbs/portfolio_optimization" target="_blank" rel="noopener noreferrer">
+                        <div class="rectangle" style="box-shadow: 0.5rem 0.5rem black; background-color: 1C1E3D;">
+                            <p style="color: white; font-weight: normal; font-size: 1rem;">
+                                Github repo
+                            </p>      
+                        </div>
                     </a>
                 </div>
                 <div class="flex-1-2">
@@ -474,6 +477,39 @@
                 </section>
             </div>
         </section>
+        <section id="backTesting">
+            <div class="modelContainer" style="display: flex; flex-direction: column; width: 100%;">
+                <div class="carouselHeader" style="height: 3rem; display: flex;">
+                    <div style="color: #1C1E3D; font-weight: bold; font-size: 1.5rem; display: inline-flex;">
+                        Select Interval
+                    </div>
+                    <span style="margin-top: 0.6rem; position: absolute; left: 50%; display: inline-flex; align-items: center; justify-content: center; transform: translate(-50%, 0%); width: 55rem;">
+                        <input type="date" id="startDate" name="startDate" value="2020-05-04" min="2020-05-04" max="2022-04-01" style="margin-right: 1rem;">
+                        to
+                        <input type="date" id="endDate" name="endDate" value="2021-05-04" min="2020-05-04" max="2022-04-01" style="margin-left: 1rem;">
+                    </span>
+                    <span style="position: absolute; right: 0;">
+                        <button type="Button" style="width: 10rem; height: 2.5rem; padding: 0 0 0; margin: 0 0 0;" class="btn btn-primary" onclick="callback3_1()">Test</button> 
+                    </span>
+                </div>
+                <div style="display: flex; position: relative; height: 70vh; top: 8rem; width: 90vw; transform: translate(-50%, 0%); left: 50%;">
+                    <div class="backTestingTables" style="flex: 1; margin: 0 1rem 0;">
+                        <table id="backTestTable" class="display" style="width:100%; text-align: center;">
+                            <thead>
+                                <tr>
+                                    <th id="backTestTh1" style="display: none">Date</th>
+                                    <th id="backTestTh2" style="display: none">Model Return</th>
+                                    <th id="backTestTh3" style="display: none">Market Return</th>
+                                    <th id="backTestTh4" style="display: none">Model Gain/Loss</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div id="backTestGraph" style="flex: 1; margin: 0 1rem 0;"></div>
+                    <div id="backTestMarketVsModel" style="flex: 1; margin: 0 1rem 0;"></div>
+                </div>
+            </div>
+        </section>
         <section id="modelling">
             <div class="modelContainer" style="display: flex; flex-direction: column;">
                 <div class="carouselHeader">
@@ -742,17 +778,17 @@
                         Recommended Holdings
                     </span>
                     <span style="position: absolute; right: 0;">
-                        <button type="Button" style="width: 10rem; height: 2.5rem; padding: 0 0 0; margin: 0 0 0;" class="btn btn-primary" onclick="callback3()">Model</button> 
+                        <button type="Button" style="width: 10rem; height: 2.5rem; padding: 0 0 0; margin: 0 0 0;" class="btn btn-primary" onclick="callback3_2()">Model</button> 
                     </span>
                 </div>
                 <div class="modellingGraphs" style="height: 25rem; top: 1.5rem;">
                     <table id="modelTable" class="display" style="width:100%; text-align: center;">
                         <thead>
                             <tr>
-                                <th>Ticker</th>
-                                <th>Initial Holdings</th>
-                                <th>Recommended Holdings</th>
-                                <th>Holdings Percentage Change</th>
+                                <th id="modelTh1" style="display: none;">Ticker</th>
+                                <th id="modelTh2" style="display: none;">Initial Holdings</th>
+                                <th id="modelTh3" style="display: none;">Recommended Holdings</th>
+                                <th id="modelTh4" style="display: none;">Holdings Percentage Change</th>
                             </tr>
                         </thead>
                     </table>
@@ -828,28 +864,63 @@
         }
     </script>
     <script>
-        async function callback3() {
-            let model_response = await fetch("/callback3/createModel")
-            if (model_response.ok) {
-                var data = await model_response.json()
+        async function callback3_1() {
+            let startDate = document.getElementById('startDate').value;
+            let endDate = document.getElementById('endDate').value;
+            let backTestResponse = await fetch("/callback3/backTest?startDate=" + startDate + "&endDate=" + endDate);
+            if (backTestResponse.ok) {
+                var data = await backTestResponse.json()
                 
                 $(document).ready(function() {
-                var table = $('#modelTable').DataTable({
+                var table = $('#backTestTable').DataTable({
                     'data': data['data'],
-                    pageLength : 5,
-                    lengthMenu: [[5], [5]]
+                    "scrollY": "55vh",
+                    "scrollCollapse": true,
+                    "paging": false,
+                    "searching": false
                     });
                 });
 
-                
-                Array.from(document.getElementsByTagName('th')).map(e => e.style.display = 'table-cell')
-                
+                for (let i = 1; i < 5; i++) {
+                    let idName = 'backTestTh' + i;
+                    document.getElementById(idName).style.display = "table-cell"
+                }
+
+                let backTestGraphObj = JSON.parse(data['graphJSON'])
+                Plotly.newPlot("backTestGraph", backTestGraphObj['data'], backTestGraphObj['layout'], {responsive: true});
+
+                let backTestMarketVsModelObj = JSON.parse(data['market_vs_model'])
+                Plotly.newPlot("backTestMarketVsModel", backTestMarketVsModelObj['data'], backTestMarketVsModelObj['layout'], {responsive: true});
 
             } else {
                 alert('error')
             }
         }
     </script>
+        <script>
+            async function callback3_2() {
+                let model_response = await fetch("/callback3/createModel")
+                if (model_response.ok) {
+                    var data = await model_response.json()
+                    
+                    $(document).ready(function() {
+                    var table = $('#modelTable').DataTable({
+                        'data': data['data'],
+                        pageLength : 5,
+                        lengthMenu: [[5], [5]]
+                        });
+                    });
+    
+                    for (let i = 1; i < 5; i++) {
+                        let idName = 'modelTh' + i;
+                        document.getElementById(idName).style.display = "table-cell"
+                    }
+    
+                } else {
+                    alert('error')
+                }
+            }
+        </script>
 </body>
 </html>
 
