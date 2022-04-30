@@ -15,6 +15,9 @@
     <script>callback3_2();</script>
 </head>
 <body>
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
     <nav class="navbar">
         <ul>
             <li><a href="#home">Home</a></li>
@@ -798,6 +801,7 @@
     </div>
     <script>
         async function callback() {
+            $(".loader-wrapper").fadeIn("slow")
             let Stock = document.getElementById('stock').value;
             let Period = document.getElementById('period').value;
             let Interval = document.getElementById('interval').value;
@@ -815,6 +819,7 @@
 
                 let chartJson = JSON.parse(obj['graphJson'])
                 Plotly.newPlot("chart", chartJson['data'], chartJson['layout']);
+                $(".loader-wrapper").fadeOut("slow")
             }
             else {
                 alert("HTTP-Error: " + response.status + "on getStock");
@@ -839,6 +844,7 @@
     </script>
     <script>
         async function callback2() {
+            $(".loader-wrapper").fadeIn("slow")
             let roi_response = await fetch("/callback2/fetchROI")
             if (roi_response.ok) {
                 let summary_obj = await roi_response.json()
@@ -858,6 +864,8 @@
                     }
                 }
 
+                $(".loader-wrapper").fadeOut("slow")
+
             } else {
                 alert('error')
             }
@@ -865,10 +873,12 @@
     </script>
     <script>
         async function callback3_1() {
+            $(".loader-wrapper").fadeIn("slow")
             let startDate = document.getElementById('startDate').value;
             let endDate = document.getElementById('endDate').value;
             let backTestResponse = await fetch("/callback3/backTest?startDate=" + startDate + "&endDate=" + endDate);
             if (backTestResponse.ok) {
+                $("#backTestTable").dataTable().fnDestroy();
                 var data = await backTestResponse.json()
                 
                 $(document).ready(function() {
@@ -892,35 +902,44 @@
                 let backTestMarketVsModelObj = JSON.parse(data['market_vs_model'])
                 Plotly.newPlot("backTestMarketVsModel", backTestMarketVsModelObj['data'], backTestMarketVsModelObj['layout'], {responsive: true});
 
+                $(".loader-wrapper").fadeOut("slow")
+
             } else {
                 alert('error')
             }
         }
     </script>
-        <script>
-            async function callback3_2() {
-                let model_response = await fetch("/callback3/createModel")
-                if (model_response.ok) {
-                    var data = await model_response.json()
-                    
-                    $(document).ready(function() {
-                    var table = $('#modelTable').DataTable({
-                        'data': data['data'],
-                        pageLength : 5,
-                        lengthMenu: [[5], [5]]
-                        });
+    <script>
+        async function callback3_2() {
+            $(".loader-wrapper").fadeIn("slow")
+            let model_response = await fetch("/callback3/createModel")
+            if (model_response.ok) {
+                var data = await model_response.json()
+                
+                $(document).ready(function() {
+                var table = $('#modelTable').DataTable({
+                    'data': data['data'],
+                    pageLength : 5,
+                    lengthMenu: [[5], [5]]
                     });
-    
-                    for (let i = 1; i < 5; i++) {
-                        let idName = 'modelTh' + i;
-                        document.getElementById(idName).style.display = "table-cell"
-                    }
-    
-                } else {
-                    alert('error')
+                });
+
+                for (let i = 1; i < 5; i++) {
+                    let idName = 'modelTh' + i;
+                    document.getElementById(idName).style.display = "table-cell"
                 }
+                $(".loader-wrapper").fadeOut("slow")
+
+            } else {
+                alert('error')
             }
-        </script>
+        }
+    </script>
+    <script>
+        $(window).on('load', function(){
+            $(".loader-wrapper").fadeOut("slow")
+        });
+    </script>
 </body>
 </html>
 

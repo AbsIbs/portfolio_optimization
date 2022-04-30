@@ -634,20 +634,20 @@ def model(model_type, start_date, end_date):
 
         market_vs_model = pd.DataFrame([
             {
-                'Name': 'Model',
+                'Category': 'Model',
                 'Cum_Sum': round(combined_df['daily_return'].sum(), 4),
             },
             {
-                'Name': 'Market',
+                'Category': 'Market',
                 'Cum_Sum': round(combined_df['market_return'].sum(), 4)
             }
         ])
 
         market_vs_model_fig = px.bar(
             market_vs_model,
-            x = 'Name',
+            x = 'Category',
             y = 'Cum_Sum',
-            color='Name'
+            color='Category'
         )
 
         market_vs_model_fig.update_layout(title_text = f'Model vs Market Cumulative ROI')
