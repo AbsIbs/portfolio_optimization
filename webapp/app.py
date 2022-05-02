@@ -6,9 +6,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import pickle
 import re
-import nltk
-from nltk.corpus import stopwords
-from nltk.stem.wordnet import WordNetLemmatizer
 import plotly
 import plotly.express as px
 from plotly.io import to_json

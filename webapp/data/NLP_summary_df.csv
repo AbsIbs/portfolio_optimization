@@ -1,8 +1,0 @@
-classifiers,val_accuracy,val_recall,val_precision,val_f1
-Tuned Gradient_boost,0.733,0.869,0.752,0.806
-Tuned Random_Forest,0.724,0.813,0.768,0.789
-Tuned Logistic_regresion,0.722,0.753,0.799,0.775
-Naive_Bayes,0.716,0.815,0.758,0.785
-Gradient_boost,0.707,0.952,0.698,0.805
-Random_Forest,0.671,0.702,0.767,0.724
-Logistic_regresion,0.657,0.681,0.756,0.716
