@@ -4,7 +4,6 @@
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../static/styles/styles.css">
-    <link rel='stylesheet' href="{{ url_for('static', filename='font-awesome/font-awesome.min.css')}}">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -99,13 +98,13 @@
                     </div>    
                 </div>   
                 <br>
-                <div class="graphFormContainer">
+                <div class="graphFormContainer" style="align-items: center; background-color: white;">
                     <div class="form" style="flex: 1;">
                         <form method="GET">
                             <div style="font-weight: bold; box-shadow: 0 0 0; font-size: 1.5rem; color: #1C1E3D;">
                                 Stock Prices
                             </div>
-                            Select from the list of constituents and filter by period and interval
+                            Select from the list of constituents
                             <label for="stock">Ticker</label>
                             <select id="stock" name="stock" aria-label="Select">
                                 <option value="AAPL">AAPL</option>
@@ -914,6 +913,7 @@
             $(".loader-wrapper").fadeIn("slow")
             let model_response = await fetch("/callback3/createModel")
             if (model_response.ok) {
+                $("#modelTable").dataTable().fnDestroy();
                 var data = await model_response.json()
                 
                 $(document).ready(function() {
