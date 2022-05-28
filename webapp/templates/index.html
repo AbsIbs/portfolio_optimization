@@ -21,8 +21,7 @@
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#dashboard">Dashboard</a></li>
-            <li><a href="#reportA">Report A</a></li>
-            <li><a href="#reportB">Report B</a></li>
+            <li><a href="#report">Report</a></li>
             <li><a href="#backTesting">Back Testing</a></li>
             <li><a href="#modelling">Modelling</a></li>
         </ul>
@@ -162,7 +161,7 @@
                 </div>
             </div>
         </section>
-        <section id="reportA">
+        <section id="report">
             <div class="container">
                 <section id="A1" style="display: flex;">
                     <div class="dashboardBanPosition" style="display: flex; align-items: center; margin-top: 0rem;">
@@ -315,162 +314,6 @@
                                         At present, this model is only useful for those willing to take on a disproporational amount of risk to beat the market
                                         <br><br>
                                         <a href="#A6"><img src="../static/img/previous.png" style="width: 5%; height: auto"></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </section>
-        <section id="reportB">
-            <div class="container">
-                <section id="B1" style="display: flex;">
-                    <div class="dashboardBanPosition" style="display: flex; align-items: center; margin-top: 0rem;">
-                        <div class="graphFormContainer" style="box-shadow: none;">
-                            <div class="ReportImg">
-                                <img src="../static/img/sa_business_statement.png" style="width: 95%; height: auto;">
-                            </div>
-                            <div class="ReportDescription">
-                                <div style="background-color: transparent;">
-                                    <p style="font-weight: bold; font-size: 1.5rem; margin-top: 0; margin-bottom: 0; padding: 1rem 1rem 1rem; color: #1C1E3D">BUSINESS PROBLEM</p>
-                                    <p style="font-weight: 500; font-size: 1rem; padding: 1rem 1rem 1rem; color: #1C1E3D">
-                                        Sentiment analysis is a fundamental practice in trading. This is even more so in today’s world where social media is rife with opinions on trading. <br><br>
-                                        As such, I have extended the project by including an NLP classification model that classifies tweets regarding trading into positive or negative sentiments.
-                                        <br><br>
-                                        <a href="#B2"><img src="../static/img/after.png" style="width: 5%; height: auto;"></a>
-                                    </p>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section id="B2" style="display: flex;">
-                    <div class="dashboardBanPosition" style="display: flex; align-items: center;">
-                        <div class="graphFormContainer" style="box-shadow: none;">
-                            <div class="ReportImg">
-                                <img src="../static/img/sa_dataset.png" style="width: 95%; height: auto;">
-                            </div>
-                            <div class="ReportDescription">
-                                <div style="background-color: transparent;">
-                                    <p style="font-weight: bold; font-size: 1.5rem; margin-top: 0; margin-bottom: 0; padding: 1rem 1rem 1rem; color: #1C1E3D">DATASET</p>
-                                    <p style="font-weight: 500; font-size: 1rem; padding: 1rem 1rem 1rem; color: #1C1E3D">
-                                        The dataset was retrieved from Kaggle. The unbalanced dataset contains near 6000 English tweets with 63% classified as positive sentiments and 37% classified as negative.                                       
-                                        <br><br>
-                                        <a href="#B1"><img src="../static/img/previous.png" style="width: 5%; height: auto"></a>
-                                        <a href="#B3"><img src="../static/img/after.png" style="width: 5%; height: auto;"></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section id="B3" style="display: flex;">
-                    <div class="dashboardBanPosition" style="display: flex; align-items: center;">
-                        <div class="graphFormContainer" style="box-shadow: none;">
-                            <div class="ReportImg">
-                                <img src="../static/img/sa_methodology.png" style="width: 95%; height: auto;">
-                            </div>
-                            <div class="ReportDescription">
-                                <div style="background-color: transparent;">
-                                    <p style="font-weight: bold; font-size: 1.5rem; margin-top: 0; margin-bottom: 0; padding: 1rem 1rem 1rem; color: #1C1E3D">METHODOLOGY</p>
-                                    <p style="font-weight: 500; font-size: 1rem; padding: 1rem 1rem 1rem; color: #1C1E3D">
-                                        The methodology follows the general steps of text preprocessing for NLP modelling. <br><br>
-                                        For this project, the vectorization technique used is a simple count vectorizer. <br><br>
-                                        Whilst I tracked each of the 4 metrics, the main metric of interest is accuracy.
-                                        <br><br>
-                                        <a href="#B2"><img src="../static/img/previous.png" style="width: 5%; height: auto"></a>
-                                        <a href="#B4"><img src="../static/img/after.png" style="width: 5%; height: auto;"></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section id="B4" style="display: flex;">
-                    <div class="dashboardBanPosition" style="display: flex; align-items: center;">
-                        <div class="graphFormContainer" style="box-shadow: none;">
-                            <div class="ReportImg">
-                                <img src="../static/img/word_cloud.png" style="width: 95%; height: auto;">
-                            </div>
-                            <div class="ReportDescription">
-                                <div style="background-color: transparent;">
-                                    <p style="font-weight: bold; font-size: 1.5rem; margin-top: 0; margin-bottom: 0; padding: 1rem 1rem 1rem; color: #1C1E3D">INITIAL FINDINGS</p>
-                                    <p style="font-weight: 500; font-size: 1rem; padding: 1rem 1rem 1rem; color: #1C1E3D">
-                                        For the EDA, focus was given to constructing word clouds. This gives a visual representation of the distribution of words used for positive and negative sentiments.<br><br>
-                                        From the images, we see that words such as ‘buy, long and break’ were most common for positive sentiments. In contrast, words such as ‘coronavirus, sell and stop’ were very common in negative sentiments. 
-                                        <br><br>
-                                        <a href="#B3"><img src="../static/img/previous.png" style="width: 5%; height: auto"></a>
-                                        <a href="#B5"><img src="../static/img/after.png" style="width: 5%; height: auto;"></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section id="B5" style="display: flex;">
-                    <div class="dashboardBanPosition" style="display: flex; align-items: center;">
-                        <div class="graphFormContainer" style="box-shadow: none;">
-                            <div class="ReportImg">
-                                <div id="SA_ReportGraph" style="width: 95%; height: auto;"></div>
-                            </div>
-                            <div class="ReportDescription">
-                                <div style="background-color: transparent;">
-                                    <p style="font-weight: bold; font-size: 1.5rem; margin-top: 0; margin-bottom: 0; padding: 1rem 1rem 1rem; color: #1C1E3D">MODEL SUMMARY</p>
-                                    <p style="font-weight: 500; font-size: 1rem; padding: 1rem 1rem 1rem; color: #1C1E3D">
-                                        First, we must identify the baseline model. That would simply be guessing the majority class. Doing this would yield an accuracy of 63%.<br>
-                                        Best model: Tuned Gradient Boosting<br>
-                                        Accuracy: 73%.<br>
-                                        Recall: 87%<br>
-                                        F1: 80%<br>
-                                        Precision: 75%<br>                                        
-                                        <br><br>
-                                        <a href="#B4"><img src="../static/img/previous.png" style="width: 5%; height: auto"></a>
-                                        <a href="#B6"><img src="../static/img/after.png" style="width: 5%; height: auto;"></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section id="B6" style="display: flex;">
-                    <div class="dashboardBanPosition" style="display: flex; align-items: center;">
-                        <div class="graphFormContainer" style="box-shadow: none;">
-                            <div class="ReportImg">
-                                <img src="../static/img/cm.png" style="width: 95%; height: auto;">
-                            </div>
-                            <div class="ReportDescription">
-                                <div style="background-color: transparent;">
-                                    <p style="font-weight: bold; font-size: 1.5rem; margin-top: 0; margin-bottom: 0; padding: 1rem 1rem 1rem; color: #1C1E3D">CONFUSION MATRIX</p>
-                                    <p style="font-weight: 500; font-size: 1rem; padding: 1rem 1rem 1rem; color: #1C1E3D">
-                                        From the confusion matrix of our best performing model, we can see that the model performs well when identifying true positive and negatives.<br><br> 
-                                        However, the model does have a false positive rate of around %, representing tweets which were classified as positive but were in fact negative. <br><br>
-                                        The false negative rate is much smaller. The false positive rate is troublesome as there may be large financial implications for investors may mistakenly buy rather than short.<br><br>
-                                        <br><br>
-                                        <a href="#B5"><img src="../static/img/previous.png" style="width: 5%; height: auto"></a>
-                                        <a href="#B7"><img src="../static/img/after.png" style="width: 5%; height: auto;"></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section id="B7" style="display: flex;">
-                    <div class="dashboardBanPosition" style="display: flex; align-items: center;">
-                        <div class="graphFormContainer" style="box-shadow: none;">
-                            <div class="ReportImg">
-                                <img src="../static/img/rl_conclusion.png" style="width: 95%; height: auto;">
-                            </div>
-                            <div class="ReportDescription">
-                                <div style="background-color: transparent;">
-                                    <p style="font-weight: bold; font-size: 1.5rem; margin-top: 0; margin-bottom: 0; padding: 1rem 1rem 1rem; color: #1C1E3D">CONCLUSION</p>
-                                    <p style="font-weight: 500; font-size: 1rem; padding: 1rem 1rem 1rem; color: #1C1E3D">
-                                        An accuracy score of 73% is not a bad starting point. There are a few improvements to be made. <br><br>
-                                        The vectorization method used was a simple count vectorizer. Other options include TF-IDF vectorization. <br><br> 
-                                        Rather than using traditional models, we can opt to leverage neural networks e.g. LSTM, GRU, include attention and transformers and utilize word embeddings as our vectorization strategy.  <br><br>
-                                        Ultimately, at this stage of the models, investors cannot rely largely on its results. <br><br>
-                                        <br><br>
-                                        <a href="#B6"><img src="../static/img/previous.png" style="width: 5%; height: auto"></a>
                                     </p>
                                 </div>
                             </div>
