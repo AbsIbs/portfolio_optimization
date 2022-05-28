@@ -1,5 +1,5 @@
 # Portfolio Optimization Using Reinforcement Learning
-![image]()
+![image](https://github.com/AbsIbs/portfolio_optimization/raw/main/images/stocks.png)
 
 ## Table of Contents
 - <a href="#business-case">Business Case</a>
@@ -44,6 +44,7 @@ The project has been summarized in the form of an **investment tool** where user
 - gather historical pricing data of stocks
 - backtest the model over a specified period and compare returns against market return
 - predict how best to allocate the portfolio for the next day
+
 ![image]()
 
 The webapp must be run locally from your computer. To do this, navigate to the project folder using terminal/bash. You can check if you are in the correct folder using,
@@ -68,11 +69,13 @@ You need to copy everything from http:// to the end and enter that into your bro
 
 ## Reinforcement Learning
 Reinforcement Learning (RL) is a type of machine learning technique that uses a reward/punishment system in order to train a machine. Specifically, the machine acts within a premade environment and learns to take the best actions by maximizing its rewards. The possible actions that are available are determined by the action space whilst the information given to the machine is determined by the observation state (a sample of the environment).
-![image]()
+
+![image](https://github.com/AbsIbs/portfolio_optimization/raw/main/images/rl_1.png)
 
 <br><br>
 The machine is given an observation, takes an action in response to this and creates a new state. That new state is analysed and if it is desirable, then a reward is given. If not, a punishment is given. This sequence repeats until all observations have been met or a reward threshold is reached.
-![image]()
+
+![image](https://github.com/AbsIbs/portfolio_optimization/raw/main/images/rl_2_old.png)
 
 ## Dataset
 - **Portfolio**: DOW Jones Industrial Index of 30 constituents
@@ -82,12 +85,14 @@ The machine is given an observation, takes an action in response to this and cre
 The dataset comprised of the 30 constituents from the DOW Jones Industrial Index. Historical stock price information was gathered through the yahoo finance api. The data was structured as a panel dataset.
 
 The initial features consisted of High, Low, Close, Volume. Technical indicators focusing on trends, momentum and volume were also included e.g., MACD, RSI and MFI.
-![image]()
+
+![image](https://github.com/AbsIbs/portfolio_optimization/raw/main/images/rl_Dataset.png)
 
 ## Modelling
 ### Methodology
-![image]()
-bservation space: 252 trading-days covariance matrix based on ROI
+![image](https://github.com/AbsIbs/portfolio_optimization/raw/main/images/rl_methodology.png)
+
+Observation space: 252 trading-days covariance matrix based on ROI
 - Action space: buy/sell/hold
 - Training period: 2013-04-26 to 2019-01-28
 - Validation period: 2019-01-29 to 2020-07-07
@@ -108,7 +113,8 @@ Whilst this may look impressive at first, we must also investigate another key m
 This is a metric that should be maximized. The market achieved an ROI of 12.2% with a sharpe ratio of around 2.2. In comparison, our best model achieved a 14.1% ROI with a sharpe ratio of around 0.46.
 
 This means that our model took on a significantly greater amount of risk for a 2% ROI difference.
-![image](url)
+
+![image](https://github.com/AbsIbs/portfolio_optimization/raw/main/images/model_results.png)
 
 ## Limitations
 The greatest limitation to this project is the fact that a next day prediction assumed that portfolio is equally distributed i.e. one has an equal amount of holdings for each stock on day 0. This means that, if an investor has a portfolio which does not has equal holdings, they cannot use this feature. A great opportunity would be to allow investors to specify their current holdings.
