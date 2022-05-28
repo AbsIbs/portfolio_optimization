@@ -46,6 +46,26 @@ The project has been summarized in the form of an **investment tool** where user
 - predict how best to allocate the portfolio for the next day
 ![image]()
 
+The webapp must be run locally from your computer. To do this, navigate to the project folder using terminal/bash. You can check if you are in the correct folder using,
+```bash
+pwd
+```
+The result should display a path that ends in "portfolio_optimization".
+<br>
+Once there, navigate into the webapp folder.
+```bash
+cd webapp
+```
+Once inside, run the following command:
+```bash
+flask run
+```
+Note that the command can only be run after flask has been installed from the requirements.txt file. After the code has been run, a message will display in your terminal/bash window 'Running on http://...' e.g.
+```bash
+* Running on http://123.4.5.6:7890
+```
+You need to copy everything from http:// to the end and enter that into your browser as a url. In this case, you'd copy **http://123.4.5.6:7890** and place that into your browser.
+
 ## Reinforcement Learning
 Reinforcement Learning (RL) is a type of machine learning technique that uses a reward/punishment system in order to train a machine. Specifically, the machine acts within a premade environment and learns to take the best actions by maximizing its rewards. The possible actions that are available are determined by the action space whilst the information given to the machine is determined by the observation state (a sample of the environment).
 ![image]()
