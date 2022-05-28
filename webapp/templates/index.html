@@ -44,7 +44,7 @@
                     <a href="https://github.com/AbsIbs/portfolio_optimization" target="_blank" rel="noopener noreferrer">
                         <div class="rectangle" style="box-shadow: 0.5rem 0.5rem black; background-color: 1C1E3D;">
                             <p style="color: white; font-weight: normal; font-size: 1rem;">
-                                Github repo
+                                GitHub repo
                             </p>      
                         </div>
                     </a>
@@ -854,13 +854,16 @@
                     roi_name.innerHTML = value;
                     let roiId = 'roi' + key;
 
+                    let color = '#808080';
+
                     if (value < 0) {
-                        document.getElementById(roiId).style.backgroundColor = 'darkred';
+                        color = 'darkred';
                     } else if (value > 0) {
-                        document.getElementById(roiId).style.backgroundColor = 'darkgreen';
-                    } else {
-                        document.getElementById(roiId).style.backgroundColor = '#808080';
+                        color = 'darkgreen';
                     }
+
+                    document.getElementById(roiId).style.backgroundColor = color;
+
                 }
 
                 $(".loader-wrapper").fadeOut("slow")
