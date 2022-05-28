@@ -56,3 +56,44 @@ The machine is given an observation, takes an action in response to this and cre
 ## Dataset
 - **Portfolio**: DOW Jones Industrial Index of 30 constituents
 - **Period**: 2013-04-26 - 2022-04-22
+
+## Feature Engineering
+The dataset comprised of the 30 constituents from the DOW Jones Industrial Index. Historical stock price information was gathered through the yahoo finance api. The data was structured as a panel dataset.
+
+The initial features consisted of High, Low, Close, Volume. Technical indicators focusing on trends, momentum and volume were also included e.g., MACD, RSI and MFI.
+![image]()
+
+## Modelling
+### Methodology
+![image]()
+bservation space: 252 trading-days covariance matrix based on ROI
+- Action space: buy/sell/hold
+- Training period: 2013-04-26 to 2019-01-28
+- Validation period: 2019-01-29 to 2020-07-07
+- Testing period: 2020-07-08 to 2022-04-22
+- The machine would trade with an initial capital of $1,000,000.
+
+### Algorithms
+>A2C
+>PPO
+>DDPG
+>SAC
+
+## Model Results
+The model results were certainly interesting. For the validation set, the market return was 12.2% whilst our best model achieved 14.1% ROI.
+
+Whilst this may look impressive at first, we must also investigate another key metric, sharpe ratio. This refers to how much ROI is gained for every unit of risk taken.
+
+This is a metric that should be maximized. The market achieved an ROI of 12.2% with a sharpe ratio of around 2.2. In comparison, our best model achieved a 14.1% ROI with a sharpe ratio of around 0.46.
+
+This means that our model took on a significantly greater amount of risk for a 2% ROI difference.
+![image](url)
+
+## Limitations
+The greatest limitation to this project is the fact that a next day prediction assumed that portfolio is equally distributed i.e. one has an equal amount of holdings for each stock on day 0. This means that, if an investor has a portfolio which does not has equal holdings, they cannot use this feature. A great opportunity would be to allow investors to specify their current holdings.
+
+## Conclusion
+To conclude, our RL models do seem useful as they were able to beat the market. However, they did so at a far greater cost.
+To increase the sharpe, different neural network architectures for the agent should be experimented with.
+Additional technical indicators may also be included along with a longer training period.
+At present, this model is only useful for those willing to take on a disproporational amount of risk to beat the market
