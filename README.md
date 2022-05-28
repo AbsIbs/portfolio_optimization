@@ -11,6 +11,7 @@
 - <a href="#feature-engineering">Feature Engineering</a>
 - <a href="#modelling">Modelling</a>
 - <a href="#model-performance">Model Performance</a>
+- <a href="#limitations">Limitations</a>
 - <a href="#conclusion">Conclusion</a>
 
 ## Business Case
@@ -74,12 +75,12 @@ bservation space: 252 trading-days covariance matrix based on ROI
 - The machine would trade with an initial capital of $1,000,000.
 
 ### Algorithms
->A2C
->PPO
->DDPG
+>A2C<br>
+>PPO<br>
+>DDPG<br>
 >SAC
 
-## Model Results
+## Model Performance
 The model results were certainly interesting. For the validation set, the market return was 12.2% whilst our best model achieved 14.1% ROI.
 
 Whilst this may look impressive at first, we must also investigate another key metric, sharpe ratio. This refers to how much ROI is gained for every unit of risk taken.
