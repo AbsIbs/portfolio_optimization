@@ -45,7 +45,7 @@ The project has been summarized in the form of an **investment tool** where user
 - backtest the model over a specified period and compare returns against market return
 - predict how best to allocate the portfolio for the next day
 
-![image]()
+![image](https://github.com/AbsIbs/portfolio_optimization/raw/main/images/portfolio_optimization_image.png)
 
 The webapp must be run locally from your computer. To do this, navigate to the project folder using terminal/bash. You can check if you are in the correct folder using,
 ```bash
