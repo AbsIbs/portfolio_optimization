@@ -36,7 +36,7 @@ Note that swig is a **system dependency** (cannot be installed via pip) that is 
 
 After, all the dependencies are stored in the **requirements.txt** file, running this command in your bash/terminal will install them all. <br>
 ```bash
-pip: -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Demo and Usage
